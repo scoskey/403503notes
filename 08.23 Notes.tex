@@ -1,0 +1,78 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{Lecture 1 Notes}
+\author{Math 403/503 }
+\date{August 15, 2022}
+
+\begin{document}
+
+\maketitle
+
+The subject begins with vector spaces. In Math 301 we worked a lot with  $R^n$,
+this is the space of n-component lists of real numbers. 
+
+\textbf{Example}: ${R^3}$ : $(1, 2, 3)$, etc. \\
+
+What made the spaces in $R^n$ work so well is that we could add any two vectors (addition worked). 
+
+\textbf{Example}: $(1, 2, 3) + (4, 5, 6) = (5, 7, 9)$\\
+
+Further, we could re-scale any vector by multiplying it by a number in $R$.
+
+\textbf{Example}: $7.5*(1, 2, 3) = (7.5, 15, 22.5)$ \\
+
+We were not able to use multiplication or division in in $R^n$. In our class, vector spaces may be real or complex meaning the scalar multipliers may be confined to the set of real numbers or expanded to the set of complex numbers, depending on context. You may read section 1A in the class textbook for a review of how to work with complex numbers. Note: In the book $F$ denotes $R$ or $C$. \\
+
+\textbf{The main concept of our class...}\\ \\
+
+Definition: A \underline{vector space} (over $F$) is a set of objects called vectors which may be added (to yield another vector in the same set) and may be multiplied by any element of $F$ (to yield another vector in the same set) in such a way that all of the following are satisfied: \\
+
+\begin{itemize}
+    \item Commutativity: $ v + w = w + v$ 
+    \item Associativity: $(u + v) + w = u + (v + w)$
+    \item Additive Identity: There exists a vector called \underline{0} in the set such that $\underline{0} + v = v$ for any $v$. 
+    \item Additive Inverse: For every vector $v$ there exists an additive inverse $-v$ satisfying $v + (-v) = \underline{0}$.
+    \item Multiplicative Identity: $1*v = v$ for any $v$. 
+    \item Distributivity: $\alpha(v + w) = \alpha*v + \alpha*w$
+\end{itemize} 
+
+Note: Many other natural properties of vector spaces are not listed here, instead they follow from the above properties. \\
+\textbf{Example}: If 0 denotes the real number 0, then it is true that $0 * v = 0$ for any $v$.\\ \\
+\textbf{Example}: $-v$ is the same as $(-1)*v$. \\ \\
+\textbf{Example}: In a vector space we can also subtract vectors: $v - w$ is calculated by taking $v + (-w)$.\\ \\ 
+
+Examples of vector spaces: 
+\begin{itemize}
+\item Main example: $F^n = R^n$ or $C^n$, i.e. an n- component lists of real or complex numbers. 
+\item $F^n =$ infinitely long lists of real or complex numbers which is equal to sequences of real or complex numbers. 
+\item $F^s =$ The set of functions from some domain $S$ to $F$. 
+\end{itemize}
+
+Note that addition of functions is "point wise". \\ $(f+g)(x) = f(x) + g(x)$ \\
+$(\alpha*f)(x) = \alpha * f(x)$\\ \\ 
+
+\textbf{Example}: $f(x) = x^2$, $g(x)= 2x + 1$\\ $(f+g)(x) = x^2 + 2x +1$ \\
+$3f(x) = 3x^2$\\ \\
+
+\underline{Vector Subspaces}\\
+You may recall that $R^n$ has lots of subspaces. For instance in $R^3$, the xy-plane $P = \{ (x, y, z) | z = 0 \}$, is a vector space as well as is any plane $P$ through the origin. \\
+
+Definition: If V is a vector space and U is a subset of V, then U is a \underline{subspace} of V if:
+\begin{itemize}
+\item \underline{0} is in $U$
+\item If $u_1$ and $u_2$ are in $U$ then $u_1 + u_2$ is in $U$ (closed under addition). 
+\item If $\alpha$ is in $F$ and $u$ is in $U$ then $\alpha*u$ is in $U$ (closed under scalar multiplication).
+
+\end{itemize}
+
+\textbf{Examples}: 
+\begin{itemize}
+\item If $R^3$ any plane that passes through the origin is a subspace. 
+\item In $R^n$ the set S of all sequences whose limit is 5 is NOT a subspace. This is because if $x_n = 5 + 1/n$ (limit is 5) and if $y_n = 5 + 1/n^2$ (limit is 5 again). Then we get $x_n + y_n = 10 + 1/n + 1/n^2$ and the limit here is 10. 
+\item In $R^n$ let $Z$ denote the set of sequences whose limit is 0. Then $Z$ is a subspace of $R^n$. (\textbf{U-Pruv})
+\item In $R^R$ (functions from $R$ to $R$) the set of continuous functions is a subspace. Also the set of differentiable functions is a subspace. 
+
+\end{itemize}
+
+\end{document}

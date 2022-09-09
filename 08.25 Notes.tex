@@ -1,0 +1,44 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{08.25.2022 Notes}
+\author{Math 403/503 }
+
+\begin{document}
+
+\maketitle
+
+From last class... An alternative definition of subspace: A subset $U$ of a vector $V$ is a subspace if and only if $U$ is a vector space in it's own right. 
+
+In set theory one of the first operations you learn is the union. Unfortuantely we can't use unions for subspaces because the union of two subspaces is usually not a subspace. \\
+
+\textbf{Example}
+Consider $V=R^2$. Given two vectors, $U_1$ and $U_2$ that are lines through the grid, the sum of those two vectors does not exists in the union. So, instead we look at the sums of vector spaces. \\
+
+Definition: If $U_1$ and $U_2$ are subspaces of a vector space $V$ then $U_1 + U_2$ is the \underline{sum set} \{ $u_1 + u_2 | u_1 \epsilon U, u_2 \epsilon U$ \}. \\
+
+\textbf{Example}: If $V = R^2$, $U_1 =$ the x- axis, and $U_2 =$ the y-axis then $U_1 + U_2 = R^2$. This means that the union of $U_1$ and $U_2$ is the x and y axes and when we add the two sets we get the coordinate plane. \\ \\
+Rigorous Proof: Given any vector $(x,y)$ in $R^2$ we can write $(x,y) = (x,0) + (0,y)$. E.g. $(3,5) = (3,0) + (0,5)$. \\ \\ 
+
+\textbf{U-Pruv}: In $R^4$ consider the subspaces: 
+\begin{itemize}
+    \item $U = \{(x, x, y, y) | x, y \epsilon R\}$
+    \item $V = \{(x, x, x, y) | x,y \epsilon R \}$
+    \item $U + V = \{(x, x, y, z) | x, y, z \epsilon R \}$
+\end{itemize}
+
+An alternative definition of the sum set...Let $V$ be a vector space and $U_1$, $U_2$ be subspaces of $V$. Then $U_1 + U_2$ is precisely the smallest subspace of $V$ containing both $U_1$ and $U_2$.\\
+
+We observe there are two kinds of sums. (1) Unique: x-axis + y-axis = $R^2$. E.g. $(3,5) = (3, 0) + (0,5)$. There is no other way to write this! \textbf{This means the sum is DIRECT}. (2) Non-unique: xy-plane + yz-plane = $R^3$. E.g. $(1, 2, 3) = (1, 1, 0) + (0, 1, 3) = (1, 2, 0) + (0, 0, 3)$. Since there are multiple ways to write it, this makes the sum not direct. \\
+
+Definition: When a sum $U_1 + U_2 = V$ has the property that any $v \epsilon V$ has a unique representation $v = u_1 + u_2$ where $u_1, u_2 \epsilon U$ we say the sum is \underline{direct} and write $U_1 \oplus U_2 = V$. \\
+
+Lemma: A summation $U_1 + U_2$ of subspaces is direct if and only if \underline{0} = \underline{0} + \underline{0} cannot be written in any other way as a sum of elements of $U_1$ and $U_2$.\\\\
+\textbf{\underline{Proof:}}\\ \\ $(\rightarrow)$ If the uniqueness property is true of any $v$ then in particular it is true of \underline{0}. \\
+$(\leftarrow)$ Suppose the uniqueness property is not true of any vector $v$ (proof by contrapositive) then $v = u_1 + u_2$ where $u_1 \epsilon U, u_2 \epsilon U$ and $v = u_1' + u_2'$ where $u_1' \epsilon U, u_2' \epsilon U$. Note, $u_1 \neq u_1'$ and $u_2 \neq u_2'$. When we take the difference of these two equations, we get 
+$v - v = u_1 + u_2 - u_1' - u_2'$. This gives us \underline{0} $= (u_1 - u_1') + (u_2 - u_2')$. Thus, we wrote \underline{0} as the sum of two nonzero vectors so the uniqueness property failed per \underline{0}.\\
+
+The uniqueness property in direct sums should remind you of linear dependence: A sum $U_1 + U_2 + U_3$ is direct $(U_1 \oplus U_2 \oplus U_3)$ if and only if with any three vectors $u_1, u_2, u_3$, with $u_1 \epsilon U_1, u_2 \epsilon U_2, u_3 \epsilon U_3$ is linearly independent
+
+
+\end{document}

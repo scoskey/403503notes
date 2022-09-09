@@ -1,0 +1,37 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{09.06 Notes}
+\author{Math 403/503 }
+\date{September 2022}
+
+\begin{document}
+
+\maketitle
+
+Recall: We introduced independence and "spans $V$" and defined a basis to be any list with both of these properties simultaneously. \\\\
+Question: How many vectors in a basis of $V$? \\ \\
+Recall: I defined "dimension" of a vector space as the least size of any spanning list of $V$. \\ \\
+\textbf{Theorem}: The size of any basis of $V$ is equal to the dimension of $V$ (in particular, all bases have the same size). \\\\
+\textbf{Proof}: Suppose $v_1, ..., v_m$ is a basis of $V$. Suppose towards a contradiction that $m < dim V$. Then $v_1, ..., v_m$ is a spanning list which is less than the least size of a spanning list! Contradiction. Suppose towards a contradiction that $m > dim V$. Then $v_1, ..., v_m$ is an independent list that is greater in size than some spanning list. This contradicts 2.2.3 previously proved. QED. \\\\
+\underline{Corollary}: Suppose $V$ is a vector space  and dim $V = m$. Then... \begin{itemize}
+\item If $v_1, ..., v_m$ is an independent list, then it is a basis. 
+\item If $v_1, ..., v_m$ spans $V$ then it is a basis of $V$. 
+\end{itemize}
+
+Proof of... \begin{itemize}
+    \item First bullet point: We showed we can extend any independent list to a basis by applying to $v_1, ..., v_m$ that extension must be trivial. Thus it is already a basis. 
+    \item Second bullet point: We showed we can whittle any spanning list to a basis.. applying this to $v_1, ..., v_m$ whittling must be trivial. Thus it is already a basis.QED. 
+\end{itemize} 
+
+Example: The list (5,7), (4,3) in $F^2$ is clearly independent because neither is a scalar multiple of the other. Furthermore, it is a list of length 2, and 2 is the dimension of $F^2$. We know this because (1,0), (0,1) is a basis of length 2. Thus, (5,7), (4,3) is a basis. No need to check spanning. \\
+
+Similarly in $F^{11}$, we know the dimension is 11, so any list of 11 independent vectors must be spanning too, so must be a basis. \\\\
+
+\textbf{Theorem}: Suppose you are summing spaces $U_1 + U_2$. The following formula relates the dimensions of $U_1, U_2$ and $U_1 + U_2$: $dim(U_1 + U_2) = dim(U_1) + dim(U_2) - dim(U_1 \bigcap U_2)$. \\ \\ 
+
+Proof sketch: Let $u_1, ..., u_m$ be a basis of $U_1 \bigcap U_2$. Extend $u_1, ..., u_m$ to be a basis of $U_1$: $u_1, ..., u_m, v_1, ..., v_k$. Also extend $u_1, ..., u_m$ to a basis of $U_2$: $u_1, ..., u_m, w_1, ..., w_l$. We claim the list of $u_1, ..., u_m, v_1, ..., v_k, w_1, ..., w_l$ is a basis of $U_1 + U_2$. Done in book: they show the list is independent. Admitting the claim, we have: \\ $dim(U_1 + U_2) = m + k + l$ \\ $= (m+k) + (m+l) -m.$ \\ $=dim(U_1) + dim(U_2) - dim(U_1 \bigcap U_2)$ \\
+Using the main theorem of this chapter 4 times. QED. 
+
+
+\end{document}

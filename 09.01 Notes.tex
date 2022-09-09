@@ -1,0 +1,33 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{09.01 Notes}
+\author{Math 403/502}
+\date{September 2022}
+
+\begin{document}
+
+\maketitle
+
+\textbf{Theorem}: A list of vectors which is linearly independent is always smaller or equal to (in size) a list of vectors which spans $V$. \\
+
+\textbf{Proof}: Let $v_1, ..., v_m$ be a linearly independent list in $V$. Let $w_1, ..., w_n$ be a spanning list in $V$. We want to show $m \leq n$. To start add $v_1$ to $w_1, ..., w_n$ to get $w_1, ..., w_n, v_1$. This list is spanning too. Moreover $v_1$ is a combination of the rest. So the list is dependent. Thus, we can remove one of the vectors and it will still be spanning and we can ensure the vector we remove is not $v_1$. Say it's $w_j$:
+$w_1, ..., w_(j-1), w_(j+1), ..., w_n, v_1$
+Continue adding $v_2, ..., v_m$ and each time removing one of the w's. We end up with $n-m$ many w's, $v_1, v_2, ..., v_m$. Since this process succeeds through m steps, we must have that $m \leq n$. QED. \\ \\
+
+Definition: If $v_1, ..., v_m$ is a list of vectors in $V$ which both spans $V$ and is linearly independent then we say $v_1, ..., v_m$ is a \underline{basis} of $V$. \\
+E.G. In $V=F^2$, the list $(1,0), (0,1)$ is basis. Another basis would be $(1,2), (3, -5)$. We call a basis by this name because they generate all the vectors in $V$ in a unique way: 
+\begin{itemize}
+\item Any $v \epsilon V$ can be expressed as $v = x_1v_1 + ... + x_nv_n$ due to the spanning property
+\item This expression is unique because of the independence property 
+
+\end{itemize}
+
+\textbf{Theorem}: Every vector space has a basis. \\ \\ 
+\textbf{Proof}: We will assume today that $v$ is finite dimensional. Thus we can assume there are vectors $v_1, ..., v_n$ which spans $V$. If it is independent then we're done. Otherwise some $v_j$ is in the span of the rest and we may safely remove it from the list. Continue doing this until no longer possible. What remains of the list is still spanning (we only removed redundant things) and is linearly independent. Thus it is a basis. QED. \\ \\
+\textbf{Proof 2}: Start with the empty list $0$. It is linearly independent but of course not spanning. Add any vector not already in the span of the list. Whenever you have a linearly independent list and add a vector not already in the span the result is linearly independent too. Continue doing so until no longer possible. The resulting list is independent and spanning, so it is a basis. QED.  \\ \\
+Complementary subspace lemma: Let $V$ be a vector space and $U$ a subspace of $V$. Thus, there exists a subspace $W$ of $V$ such that $U \oplus W = V$. Proof follows the strategy of the last proof. Starting with $0$, build a basis for $U$ as above. Get $u_1, ..., u_m$. From there continue building a basis for $V$ as above again. Get: $u_1, ..., u_m, w_1, ..., w_n$ (this is the basis for $V$). \\
+
+\textbf{U-Pruv}: Let $W$ be the space spanned by $w_1, ..., w_n$. I claim that $U \oplus W = V$. 
+
+\end{document}
