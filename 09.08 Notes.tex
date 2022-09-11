@@ -1,0 +1,63 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{09.08 Notes}
+\author{Math 403/503 }
+\date{September 2022}
+
+\begin{document}
+
+\maketitle
+
+\section{Linear Maps}
+
+Previously we defined and discussed vector spaces which support addition and scalar multiplication and talked about their structures. Now we will talk about mappings between vector spaces which preserve the addition and scalar multiplication. \\ 
+
+Definition: A \underline{linear map} from vector space $V$ to vector space $W$ is a function $T: V$ \textrightarrow $W$ with the properties: \begin{itemize} 
+\item Preserves addition: $T(U+V) = T(U) + T(V)$ for all $u, v \epsilon V$
+\item Preserves scalar multiplication: $T(\alpha V) = \alpha T(V)$ for all $\alpha \epsilon F, v \epsilon V$
+
+\end{itemize}
+
+Examples: \begin{itemize} 
+\item The "zero map": The function "0" which sends every $v \epsilon V$ to \underline{0} in $W$. 
+\item The "identity map": Here, $I:V$ \textrightarrow $V$ sends $I(V) = V$ for all $v \epsilon V$
+\item The derivative: $V: P(F) =$ all polynomials \\
+$D(p(x)) = p'(x)$ - this is linear! \\
+$D(x^{2} + 3x + 5) = 2x+3 = D(x^{2}) + D(3x) + D(5)$\\
+$D(5x^{3}) = 15x^{2} = 5D(x^3)$\\
+Note: integration is also linear (not going to discuss today though)
+\item Define $T: R^3$ \textrightarrow $R^2$ by $T(x, y, z) = (2x - y + 3z, 7x + 5y -6z)$ \\
+Non-example: $T(x, y, z) = (3x+1, 4y - 3z)$ - this doesn't work! \\
+Ex: $T(2(x, y, z)) = T(2x, 2y, 2z) = (6x + 1, 8y - 6z)$\\
+vs. $2T(x, y, z) = (6x + 2, 8y - 6z)$
+
+\end{itemize}
+
+Example: If A is any $m x n$ matrix then A determines a linear map $T: F^n$ \textrightarrow $F^n$ by $T(v) = A*V$\\\\
+\textbf{Theorem}: Let $V$ and $W$ be vector spaces and $v_1, ..., v_n$ be a basis of $V$ and let $w_1, ..., w_n$ be any vectors in $W$. Then there is a unique linear map $T: V$ \textrightarrow $W$ such that $T(v_i) = w_i$ for all i. \\ \\ 
+
+Proof sketch: Given any vector $v$ in $V$ we know it can be expressed uniquely as a linear combination: $v = \alpha_1v_1 + ... + \alpha_nv_n$. We therefore define $T$ on $v$ by $T(v) = \alpha_1T(v_1) + ... + \alpha_nT(v_n)$. \\\\
+"Extending by linearity" - This is very much relied on $v_1, .., v_n$ being a basis. \\
+
+Definition/Theorem: Let $L(V,W)$ denote the space of ALL linear transformations from $V$ to $W$. Then $L(V,W)$ ITSELF supports addition and scalar multiplication operations and $L(V,W)$ is a vector space. \underline{Explanation}: To add 2 linear transformations we do the natural thing: $(S + T)(v) = S(v) + T(v)$. To scalar multiply: $(\alpha T)(v) = \alpha T(v)$. E.g. we add matrices of same shape by adding their components and we can scale matrices by scaling their components. \\
+Unlike ordinary vectors, linear transformations can also be "multiplied" or composed at least in certain circumstances. \\
+Definition: If $T \epsilon L(U,V)$ and $S \epsilon L(V,W)$ then the \underline{product} or composition $(ST)(w) = S(T(w))$. \\
+Multiplication is...\begin{itemize}
+\item Associative $((RS)T = R(ST))$ because composition of functions always is.
+\item Distributive: $(S_1 + S_2)T = S_1T + S_2T$\\
+$S(T_1 + T_2) = ST_1 + ST_2$
+\item It is NOT generally commutative! ST need not equal TS. Often we cannot even make sense of both products but even it we can, we could still have $ST \neq TS$. \\
+Example: Let $V$ = all polynomials over $R$. Let $D \epsilon L(v, v)$ be the derivative. Let $T \epsilon L(v, v)$ be $T(p(x)) = x^2p(x)$. \\
+$(T*D)(p(x)) = T(D(p(x))$\\
+$= T(p'(x)) = x^2p'(x)$
+$(D*T)(p(x)) = D(T(p(x)))$\\
+$=D(x^2p(x))$\\
+$=2xp(x) + x^2p'(x)$
+\end{itemize}
+Think about matrices. We can add and scale them and sometimes we can multiply them too (we can multiply AB if the number of columns of A = the number of rows of B). Associativity and distributivity work. Commutativity does not. \\\\
+$S(T_1 + T_2) = ST_1 + ST_2$\\
+We know S is linear transformation, T is also. 
+
+
+\end{document}
