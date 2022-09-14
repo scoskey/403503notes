@@ -1,0 +1,56 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{09.13 Notes}
+\author{Math 403/503 }
+\date{September 2022}
+
+\begin{document}
+
+\maketitle
+
+\section{Null Spaces, Matrices}
+
+We know about vector spaces. We know about linear transformations. Now we look at vector subspaces that are determined from linear transformations. \\\\
+Definition: If $T \epsilon L(V,V)$, then the \underline{null space} (or \underline{kernel}) is: \\\\
+{null T = \textbraceleft $v \epsilon V | T(v) = 0$\textbraceright} \\\\
+Examples: 
+\begin{itemize}
+\item If T = 0 the 0 transformation then null T = V (the whole domain)
+\item $T \epsilon L(V,V)$ is the identity $T(v) = v$, null T = \textbraceleft 0\textbraceright
+\item $T\epsilon L(P(R), P(R))$, T = the derivative, null T = the constant functions (a one dimensional space of R)
+
+\end{itemize}
+Lemma: If $T\epsilon L(V,W)$ then null T is a subspace of V. In particular it's a vector space. \\\\
+\textbf{Proof}: 
+\begin{itemize} 
+\item 0 exists in null T: $T0 = 0$ - check! 
+\item If $v_1, v_2 \epsilon$ null T then $v_1 + v_2 \epsilon $ T: $Tv_1 = 0, Tv_2 = 0$, so $T(v_1 + v_2) = T(v_1) + T(v_2) = 0 + 0 = 0$. So $v_1 + v_2 \epsilon T$ 
+\item If $v \epsilon $ null T, then $\alpha v \epsilon $ T: $Tv = 0$ so $T(\alpha v) = \alpha T(v) = \alpha 0 = 0$. QED.
+
+\end{itemize}
+Definition: If $T \epsilon L(V,W)$ the \underline{range} of T is: range T = \textbraceleft $T(v) | v\epsilon V$\textbraceright \\\\
+Example: 
+\begin{itemize}
+\item T = 0, the zero transformation - range T = \textbraceleft 0\textbraceright
+\item $T \epsilon L(R^2, R^3)$ defined by $T(x,y) = (2x, 5y, x+y)$ - range T = some plane in $R^2$
+\item $T \epsilon L(P(R), P(R))$, T = the derivative - range T = all of $P(R)$
+
+\end{itemize}
+
+Lemma: Let $T\epsilon L(V,W)$ then range T is a subspace of W. \\\\
+
+\textbf{Proof}: 
+\begin{itemize}
+\item $0 \epsilon $ range T: $T0=0$ - check! 
+\item If $w_1, w_2 \epsilon$ range T then $w_1 + w_2 \epsilon$ range T: $w_1 = Tv_1$, $w_2 = Tv_2$ $\rightarrow$ $w_1 + w_2 = Tv_1 + Tv_2 = T(v_1 + v_2)$ so $w_1 + w_2 \epsilon $ range T.
+\item If $w \epsilon $ range T and $\alpha \epsilon F$ then $\alpha w \epsilon $ range T: $w = Tv \rightarrow \alpha w = \alpha Tv = T(\alpha v)$. So $\alpha w$ is in range T. QED.
+\end{itemize}
+Recall if $f: X \rightarrow Y $ then function f is \underline{injective} means: $x_1 \neq x_2 \rightarrow f(x_1) \neq f(x_2)$. \\
+The function f is \underline{surjective} onto Y means: for every $y \epsilon Y$ there exists an $x \epsilon X$ such that $f(x) = y$. \\\\
+Lemma: a linear transformation $T \epsilon L(V,W)$ is injective IFF null T = \textbraceleft 0\textbraceright \\\\
+\textbf{Proof}: ($\rightarrow$) Suppose T is injective. Recall null(T) = everything that maps to 0. Since T is injective, at most one point in V can map to 0. We know $T0 = 0$ and now there can be nothing else! So null T = \textbraceleft 0\textbraceright.\\
+$(\leftarrow)$ Suppose null T = \textbraceleft 0\textbraceright. Suppose $Tv_1 = Tv_2$. We want to show $v_1 = v_2$ (this is injective in its contrapositive form). Then $Tv_1 - Tv_2 = 0$, $T(v_1 - v_2) = 0$, $v_1 - v_2 \epsilon $ null T, $v_1 - v_2 = 0$, $v_1 = v_2$. QED. 
+
+
+\end{document}
