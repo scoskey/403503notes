@@ -1,0 +1,47 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+
+\title{09.15 Notes}
+\author{Math 403/503 }
+\date{September 2022}
+
+\begin{document}
+
+\maketitle
+
+\section{Fundamental Theorem of Linear Maps}
+
+Announcement: Next week is week 5. Tuesday we will review current homework and past materials as needed. By Wednesday morning the first take home quiz will be released. The quiz will be similar to homework but covers all materials so far and must be worked on individually. 
+\\\\
+\textbf{FTLM}: Let $T \epsilon L(V,W)$, then we have:dim V = dim null T + dim range T. \\
+\textbf{Proof}: Let $u_1,..., u_m$ be a basis of null T (so $u_1,..., u_m$ are independent vectors in V which span null T). Extend this to a basis of all of V: $u_1,..., u_m, v_1, ..., v_m$. This means dim null T = m and dim V = m + n. We need only show range T = n. to establish this, it is enough to show $Tv_1, ..., Tv_n$ are a basis of range T. \\
+(1) $Tv_1, ..., Tv_n$ span range T (clearly $Tv_j$ are elements of range T). Let $w$ be an arbitrary element of range T. Then $w = Tv$ for some $v \epsilon V$. \\
+Write: $v = \alpha_1u_1 + ... + \alpha_mu_m + \beta _1 v_1 + ... + \beta_n v_n$\\
+Apply T to both sides: $w = Tv = \alpha_1Tu_1 + ... + \alpha_mTu_m + \beta _1Tv_1 + ... + \beta_nTv_n$. The terms with alpha cancel because they are the null space which leaves us with... $=\beta _1Tv_1 + ... + \beta_nTv_n$.\\
+(2) $Tv_1, ..., Tv_n$ are independent. Suppose $\beta _1Tv_1 + ... + \beta_nTv_n = 0$. Then $T(\beta_1v_1 + ... + \beta_nv_n) = 0$. So $\beta_1v_1 + ... + \beta_nv_n \epsilon T$. This means we can write: $\beta_1v_1 + ... + \beta_nv_n = \alpha_1 u_1 + ... + \alpha_m u_m$. Since the list $u_1, ..., u_m, v_1, ..., v_n$ was independent, we must have $\beta_1 = \beta_2 = ... = \beta_n = 0$ (and also the alphas!). This shows $Tv_1, ..., Tv_n$ are independent. QED. \\
+
+The FTLM has many useful consequences! Please read at the end of 3B. For example a map to a larger dimensional space cannot be surjective. The possibilities: \\
+$T = 0 \rightarrow$ range T = $\{ 0 \}$\\
+$T(x,y) = (x, 0, 0) \rightarrow$ range T = x-axis line \\
+$T(x,y) = (x, y, 0) \rightarrow $ range T = xz-plane \\
+$T(x,y) = (x, 0, y) \rightarrow $ range T = xz-plane \\
+$T(x,y) = (x+y, x-y, 3x+2y) \rightarrow$ range T = some random plane \\\\
+
+dim V = dim null T + dim range T \\
+2 = between 0 and 2 + dim range T $\rightarrow$ dime range T is between 2-2 and 2-0 so between 0 and 2.
+
+\section{Matrices} 
+Let V, W be vector spaces with bases $v_1, ..., v_n$ and $w_1, ..., w_n$ respectively. Let $T \epsilon L(V,W)$ then the \underline{matrix of T} with respect to these 2 bases is defined as follows: For each j between 1 and n write: $$Tv_j = \alpha_{1,j}w_1 + ... + \alpha_{m,j}w_m$$ Then the matrix A of T has entry $\alpha_{i,j}$ in the $i^{th}$ row and $j^{th}$ column. \\\\
+Example: Let $T\epsilon L(F^2, F^3)$ be the transformation $T(x,y) = (x+3y, 2x + 5y, 7x + 9y)$. Use the basis $\begin{pmatrix} 1 \\ 0 \end{pmatrix}$, $\begin{pmatrix} 0 \\ 1 \end{pmatrix}$ of $F^2$ and use the basis $\begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}$, $\begin{pmatrix} 0 \\ 1\\ 0 \end{pmatrix}$, $\begin{pmatrix} 0 \\ 0\\1 \end{pmatrix}$ of $F^3$\\
+$T\begin{pmatrix} 1 \\ 0 \end{pmatrix} = 1 \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} + 2 \begin{pmatrix} 0 \\ 1\\0 \end{pmatrix} + 7 \begin{pmatrix} 0 \\ 0\\1 \end{pmatrix}$\\
+$T\begin{pmatrix} 0 \\ 1 \end{pmatrix} = 3 \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} + 5 \begin{pmatrix} 0 \\ 1\\0 \end{pmatrix} + 9 \begin{pmatrix} 0 \\ 0\\1 \end{pmatrix}$\\
+The matrix of T is therefore: $A = \begin{bmatrix} 1 & 3\\2 &5 \\ 7 &9 \end{bmatrix}$\\
+\textbf{Definition/Theorem}: Let $F^{m,n}$ denote the space of all matrices with m rows and no columns. Then $F^{m,n}$ supports additions and scalar multiplcation and is in fact a vector space. \\
+\underline{addition}: $\begin{bmatrix} 1&2\\3&4 \end{bmatrix} + \begin{bmatrix} 5&6\\7&8 \end{bmatrix} = \begin{bmatrix} 6&8\\10&12 \end{bmatrix}$\\\\
+\underline{scalar multiplication}: $\alpha \begin{bmatrix} 1&2\\3&4 \end{bmatrix} = \begin{bmatrix} \alpha & 2\alpha \\ 3\alpha & 4\alpha \end{bmatrix}$\\\\
+Matrices have a further capability which is that they may be multiplied! If $A \epsilon F^{m,n}$ and $B \epsilon F^{n,p}$ (note the number of columns of A = the number of rows of B) then $A*B \epsilon F^{m,p}$. \\\\
+Matrix multiplication is performed by taking scalar products of each row of A with each column of B. This is done so that A represents the transformation S, and B represents the transformation T, then AB represents $ST = S \circ T$.
+
+
+\end{document}
