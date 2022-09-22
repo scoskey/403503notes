@@ -1,0 +1,25 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+
+\title{09.20 Notes}
+\author{Math 403/503 }
+\date{September 2022}
+
+\begin{document}
+
+\maketitle
+
+\section{Week 5}
+We talked about how any transformation $T: V \rightarrow W $ can be given as a matrix $A \epsilon F^{m,n}$ with respect to a basis $v_1,...,v_n$ of $V$ and $w_1,..., w_n$ of $W$. We further talked about how $F^{m,n}$ = the space of $m x n$ matrices supports addition and scalar multiplication, making it into a vector space. Matrices additionally support multiplication or composition when certain dimensions align. \\
+
+So let $V$ be a vector space with basis $v_1,..., v_n$ and $W$ be a vector space with basis $w_1,..., w_n$. Let $S \epsilon L(V,w)$. Then $S$ has a matrix, call it $A$. The entries of $A$ will be denoted $(a_{i,j})$. So $S(v_j) = \sum_{j=1}^m a_{i,j} w_i$. Now additionally let $T \epsilon L(U,V)$. Then $T$ has a matrix, call it $B$. The matrices of $B$ will be denoted $(b_{j,k})$. So $Tu_k = \sum_{j=1}^n b_{j,k} v_j$. We know we can compose $S \circ T$ denoted $ST \epsilon L(U,V)$. \\\\
+Question: What is the matrix of $ST$?\\
+$ST_{uk} = S(Tu_k) = S(\sum_{j=1}^n b_{j,k}v_j)$\\
+Using linearity of $S$... \\
+$=\sum_{j=1}^n b_{j,k}Sv_j = \sum_{j=1}^n b_{j,k} \sum_{i=1}^m a_{i,j}w_i = \sum_{i=1}^m (\sum_{j=1}^n a_{i,j}b_{j,k}) w_i$\\
+Note: The inner summation of the final equation written are the entries of matrix $ST$. We therefore define the matrix product $AB$ to be the matrix with entries $\sum_{j=1}^n a_{i,j}b_{j,k}$.\\\\
+\textbf{Example}: 
+Let $U = R^2 \rightarrow u_k = \begin{bmatrix} 1\\0 \end{bmatrix}, \begin{bmatrix} 0 \\ 1 \end{bmatrix}$, $V = R^3 \rightarrow v_j = \begin{bmatrix} 1\\0\\0 \end{bmatrix}, \begin{bmatrix} 0\\1\\0 \end{bmatrix}, \begin{bmatrix} 0\\0\\1 \end{bmatrix}$, $W = R^4 \rightarrow w_i = \begin{bmatrix} 1\\0\\0\\0 \end{bmatrix}, \begin{bmatrix} 0\\1\\0\\0 \end{bmatrix}, \begin{bmatrix} 0\\0\\1\\0 \end{bmatrix}, \begin{bmatrix} 0\\0\\0\\1 \end{bmatrix} $. $S\epsilon L(V,W)$ suppose it has a matrix $A = \begin{bmatrix} 1 & 2&3 \\ 3&4&5\\4&5&6 \end{bmatrix}$. $T\epsilon L(U,V)$ suppose it has matrix $B = \begin{bmatrix} 1&-2\\0&1\\2&1 \end{bmatrix}$. Then $ST \epsilon L(U,W)$. It's matrix is $AB = \begin{bmatrix} 1 & 2&3 \\ 3&4&5\\4&5&6 \end{bmatrix}\begin{bmatrix} 1&-2\\0&1\\2&1 \end{bmatrix}=\begin{bmatrix} 7&3\\10&3\\13&3\\16&3 \end{bmatrix} $. \\The rule to find the $i,k$ entry of $AB$ is: you multiply the $i^{th}$ row of $A$ by the $k^{th}$ column of $B$ (in sum dot product fashion)
+
+\end{document}
