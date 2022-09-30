@@ -1,0 +1,64 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+
+\title{09.27 Notes}
+\author{Math 403/503 }
+\date{September 2022}
+
+\begin{document}
+
+\maketitle
+
+\section{Isomorphisms, Automorphisms, Dual Spaces}
+If $T\epsilon L(V,W)$ is a linear map from $V$ to $W$, we said $T$ was \underline{injective} if null T = 0. $T$ is \underline{surjective} if range T = W. \\\\
+\textbf{Definition}: A function $f: X \rightarrow Y$ is \underline{bijective} if it is both injective and surjective. \\\\
+\textbf{Fact}: A function $f: X \rightarrow Y$ is bijective if and only if there exists a function $f^{-1}: Y \rightarrow X$ such that $f \circ f^{-1} =$ identity function on $Y$ (i.e. $f(f^{-1}(y))=y,  \forall y \epsilon Y$). And $f^{-1} \circ f=$ identity function on $X$ (i.e. $f^{-1}(f(x)) = x, \forall x \epsilon X$).\\\\
+Returning to linear maps $T\epsilon L(V,W)$ we see that if $T$ is bijective then $T$ has an inverse function $T^{-1}$ which is a function from $W$ to $V$. In other words, $T \circ T^{-1} = id_{W}$ and $T^{-1} \circ T = id_{V}$.\\\\
+The main additional fact we need is...\\
+\textbf{Lemma}: If $T\epsilon L(V,W)$ is bijective then $T^{-1}$ is a linear map too so we can say $T^{-1} \epsilon L(W,V)$.\\\\
+\textbf{Proof}: We first check that for $w_1, w_2 \epsilon W$ we have $T^{-1}(w_1 + w_2) = T^{-1}(w_1) + T^{-1}(w_2)$. We proceed as follows, $T(LHS)= T(T^{-1}(w_1 + w_2) = w_1 + w_2$ (because $T(T^{-1})$ cancels out). Similarly, $T(RHS) = T(T^{-1}(w_1) + T^{-1}(w_2)) = w_1 + w_2$ (once again they cancel). So, $T(LHS) = T(RHS)$ and injectivity by the original definition implies that $LHS = RHS$. We next check that for $\alpha \epsilon F$ and $w \epsilon W$ we have $T^{-1}(\alpha w) = \alpha T^{-1}(w)$. Once again, we take $T$ of both sides. $T(LHS) = T(T^{-1}(\alpha w)) = \alpha w$ and $T(RHS) = T(\alpha T^{-1}(w)) = \alpha w$. Thus, $T(LHS) = T(RHS)$. Again, by injectivity we get $LHS = RHS$. QED. \\\\
+
+\textbf{Definition}: If $T\epsilon L(V,W)$ is a bijective (invertible) linear mpa then $T$ is called an \underline{isomorphism} of $V$ and $W$. We also say $V$ and $W$ are isomorphic, $V \cong W$. We think of $T$ as a relabelling demonstrating that $V$ and $W$ are really the same but with different names. \\\\
+Prominent examples of isomorphic vector spaces: 
+\begin{itemize}
+    \item Suppose $V$ is any finite dimensional vector space (dim V = M). Then $V$ has a basis $v_1, ..., v_m$. $V$ is isomorphic to $F^m$ via the representation map that sends only $v \epsilon V$ to the column vector $\begin{bmatrix} a_1\\.\\.\\.\\a_m \end{bmatrix}$ where $v = a_1v_1 + ... + a_mv_m$. Thus, $V \cong F^m$. 
+    \item Suppose $V,W$ are fininte dimensional vector spaces and dim V =m and dim W = n, and we fix bases $v_1,..., v_m$ of $V$ and $w_1,..., w_n$ of $W$. Then $L(V,W)$ is isomorphic to $F^{n,m}$ (this is the space of n by m matrices over $F$) via the matrix representation function that takes any $T \epsilon L(V,W)$ and produces a matrix $(a_{i,j} = A$ that represents $T$ in the given bases. 
+    \item $F^{n,m}$ is isomorphic to $F^{nm}$. E.g. the space of matrices $\begin{bmatrix} a &b\\c&d \end{bmatrix}$ is isomorphic to the space of vectors $\begin{bmatrix}
+        a\\b\\c\\d
+    \end{bmatrix}$
+    \item $F^{n,m}$ is isomorphic to $F^{m,n}$\\
+    $\begin{bmatrix}
+        a&b&c\\d&e&f
+    \end{bmatrix}$ 
+    map it to $\begin{bmatrix}
+        a&d\\b&e\\c&f
+    \end{bmatrix}$
+
+    \textbf{Corollary}: If $V$ and $W$ are vector spaces of the same dimension then $V \cong W$.\\
+\textbf{Proof}: Let n = dim V = dim W then $V \cong F^n$ and $W \cong F^n$. By symmetry and transitivity, $V \cong W$. QED. 
+
+\item Let $P_n(F)$ be the space of polynomials over $F$ of degree at most n. Then $P_n(F) \cong F^{n+1}$. E.g. $a_0 + a_1x + ... + a_nx^n$ maps to $\begin{bmatrix}
+    a_0\\.\\.\\.\\a_n
+\end{bmatrix}$
+\end{itemize}
+
+The case $L(V,V)$: \\\\
+\textbf{Terminology}: 
+\begin{itemize} 
+\item Elements $T \epsilon L(V,V)$ are called \underline{operators}. 
+\item If $T \epsilon L(V,V)$ is bijective (invertible) then $T$ is called an \underline{automorphism}.
+\item $GL(V)$ = the "general linear group' of $V$ is the subset of $L(V,V)$ consisting of the bijective (invertible) operators. \\
+Note: $GL(V)$ is a \underline{group} with the composition operation! This means several axioms are satisfied: closure, associativity, identity, inverses. \\\\
+\textbf{Lemma}: Suppose $V$ is finite dimensional and $T \epsilon L(V,V)$. Then $T \epsilon GL(V)$ if and only if $T$ is injective or $T$ is surjective. \\
+\textbf{Proof}: Clearly if $T \epsilon GL(V)$ then $T$ is bijective so it is both injective and surjective. For the converse, suppose $T$ is injective or surjective. We will use the FTLM; dim V = dim null T + dim range T
+\item If T is injective, null T = 0, so dim null T = 0. Thus dim V = dim range T. So V = range T so T is surjective. 
+\item If T is surjective, range T = V, so dim range T = dim V, so dim range T = dim V, so dim null T = 0. So T is injective. QED. 
+
+
+\end{itemize}
+
+
+
+
+\end{document}
