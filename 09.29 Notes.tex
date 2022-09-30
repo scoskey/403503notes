@@ -1,0 +1,87 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+
+\title{09.29 Notes}
+\author{Math 403/503}
+\date{September 2022}
+
+\begin{document}
+
+\maketitle
+
+\section{Duality}
+Linear transformations lead a double life! Before we discuss that, we need to talk about dual vectors, or linear functionals. \\
+\textbf{Definition}: Let $V$ be a vector space. A \underline{linear functional} on $V$ is a linear map $\phi : V \rightarrow F$. The \underline{dual space} of $V$ is the space $V' = L(V,F)$ of all linear functionals on $V$. \\\\
+If we think of $V$ as $F^n$ = all n-dimensional column vectors, then we can think of $V'$ as all n-dimensional row vectors. \\
+$\begin{bmatrix} 
+\alpha & \beta & \phi
+\end{bmatrix} \begin{bmatrix}
+    a\\b\\c
+\end{bmatrix} = \alpha a + \beta b + \phi c$\\\\
+\textbf{Proposition}: $V'$ has the same dimension as $V$. \\
+\textbf{Proof}: $V' = L(V,F)$ has dimension dim V x dim F = dim V x 1 = dim V. Given a basis $v_1, ..., v_n$ of $V$ we can find a "dual basis" $\phi_1, ..., \phi_n$ of $V'$ by: $\phi_i(v_j) = 1$ if $i = j$ or $0$ if $i \neq j$. \\
+e.g. if $v_1 = \begin{bmatrix}
+    1\\0\\00
+\end{bmatrix}, v_2 = \begin{bmatrix}
+    0\\1\\1
+\end{bmatrix}, v_3 = \begin{bmatrix}
+    0\\0\\1
+\end{bmatrix}$ in $F^3$ then $\phi_1 = \begin{bmatrix}
+    1 & 0 & 0
+\end{bmatrix}, \phi_2 = \begin{bmatrix}
+    0 & 1 & 0 
+\end{bmatrix}, \phi_3 = \begin{bmatrix}
+    0&0&1
+\end{bmatrix}$\\
+\textbf{Definition}: If $T\epsilon L(V,W)$ then we can define its \underline{dual} $T' \epsilon L(W', v')$ by $T'(\Psi) = \Psi \circ T$. \\\\
+In matrix land, this amounts to looking at a matrix $A(T)$ acting on row vectors on its \underline{left}. \\
+$T: \begin{bmatrix}
+    1&2&3\\4&5&6
+\end{bmatrix} \begin{bmatrix}
+    a\\b\\c
+\end{bmatrix} = \begin{bmatrix}
+    . \\ .
+\end{bmatrix}$
+$T' : \begin{bmatrix}
+    \alpha & \beta 
+\end{bmatrix} \begin{bmatrix}
+    1&2&3\\4&5&6
+\end{bmatrix} = \begin{bmatrix}
+    . &. &.
+\end{bmatrix}$ \\
+\textbf{Definition}: Recall $A^T$ is the matrix obtained from $A$ by exchanging its rows and columns. If $A = \begin{bmatrix}
+    1&2&3\\4&5&6
+\end{bmatrix}$ then $A^T = \begin{bmatrix}
+    1&4\\2&5\\3&6
+\end{bmatrix}$ We can thus view $T'$ as $A^T$ acting "normally": $T' \approx \begin{bmatrix}
+    1&4\\2&5\\3&6
+\end{bmatrix} \begin{bmatrix}
+    \alpha \\ \beta 
+\end{bmatrix} = \begin{bmatrix}
+    .\\.\\.
+\end{bmatrix}$\\
+\textbf{Theorem}: If $T$ has matrix $A$ in some basis then $T'$ has matrix $A^T$ in the corresponding dual basis. \\\\
+For the rest of the time we explain what happens with dimension, null space, and range when you take a dual. Start with null(T'). Observe: $\phi \epsilon$ null(T') $\leftrightarrow T'(\phi)= 0$\\
+$\leftrightarrow \phi \circ T = 0$\\
+$\leftrightarrow \phi \lceil _ range T = 0$\\\\
+\textbf{Definition}: If $U$ is subspace of $V$, then the \underline{annihilator of U} is $U^0$ = all elements $u \epsilon V'$ such that $\phi \lceil U = 0$.\\
+\textbf{Theorem}: \begin{itemize}
+    \item null(T') = (range T)$^0$
+    \item range(T') = (null T)$^0$
+\end{itemize}
+We proved (1) above! We leave (2) to the text. \\\\
+Next we study dimensions... First we need a lemma about dimensions of annihilators! \\
+\textbf{Lemma}: dim U + dim U$^0$ = dim V. \\
+\textbf{Proof}: Begin with a basis $v_1,..., v_n$ of $U$ and extend it to a basis $v_1,...,v_k,v_{k+1}, ..., v_n$ of $V$ (note dim U = k). We claim that the standard dual basis vectors $\phi_{k+1},..., \phi_n$ are a basis of $U^0$. These are IN $U^0$. They are linearly independent. They span $U^0$: given any $\phi \epsilon U$ we have $\phi(v_1) = 0... \phi(v_k) = 0, \alpha(v_{k+1}) = \phi_{k+1},..., \alpha(v_n) = \phi_n$. So $\phi = \alpha_{k+1}\phi_{k+1}+...+\alpha_n \phi_n$. QED. \\\\
+\textbf{Theorem}: \begin{itemize}
+    \item dim null T' = dim W - dim range T 
+    \item dim range T' = dim range T 
+\end{itemize}
+\textbf{Proof}: \begin{itemize}
+    \item dim null T' = dim(range)$^0$ = dim W - dim range T
+    \item dim range T' = dim W' - dim null T' (FTLM) = dim W' - (dim W - dim range T) = dim range T. QED. 
+\end{itemize}
+Commentary: The last part of the theorem means that a matrix $A$ has the same rank as $A^T$. This actually makes sense recalling math 301. We said the column space (range T) has dimension equal to the number of pivots AND the row space (range T') also has dimension equal to the number of pivots! 
+
+\end{document}
