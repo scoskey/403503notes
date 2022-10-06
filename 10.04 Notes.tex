@@ -1,0 +1,46 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{10.04 Notes}
+\author{Math 403/503 }
+\date{October 2022}
+
+\begin{document}
+
+\maketitle
+
+\section{Invariant spaces and Eigenvectors}
+
+I am skipping chapter 4 on polynomials, so please read that on your own!\\\\\
+Chapter 5: Here we let $V$ be a finite dimensional vector vector space. We now know $V$ is isomorphic to $F^n$. As usual $F$ may be $R$ or $C$. And we study \underline{operators} $T \epsilon L(V,V)$. \\\\
+\textbf{Definition}: Let $V$ and $T$ be as above. A subspace $U$ of $V$ is called \underline{invariant} for $T$ if for all $u \epsilon U, Tu \epsilon U$. If $U$ is invariant for $T$ then $T$ is restricted to the domain of $U$. And it's also an operator where $T$ is restricted to the domain $u \epsilon L(V,U)$. These invariant subspaces let us study "pieces" of $T$ separately. For this section we focus on invariant subspaces $U$ which are one dimensional and thus are spanned by a single vector $V$. If span of $V$ is a one dimensional invariant subspace for $T$ then $Tv = \lambda v$ for some scalar $\lambda \epsilon F$. This is the condition for $\lambda$ to be an eigenvalue.\\\\
+\textbf{Definition}: If $T$ is an operator of $V$ ($T \epsilon L(V,V)$) an \underline{eigenvalue} of $T$ is a $\lambda \epsilon F$ such that there exists a vector $v \epsilon V$ and $Tv = \lambda v$. Such a vector $V$ is called an eigenvector of $T$ corresponding to $\lambda$. \\\\
+\textbf{Lemma}: Let $T \epsilon L(V,V)$ a vector $V$ is an eigenvector corresponding to $\lambda$ if and only if $v \epsilon$ null$(T - \lambda I)$. \\
+\textbf{Proof}: $Tv = \lambda v \leftrightarrow Tv - \lambda v = 0 \leftrightarrow Tv - \lambda Iv = 0$ \\ Note $Iv = v$ for every $v$ and that $I \epsilon L(V,V)$ is called the identity operator. \\
+$\leftrightarrow (T - \lambda I)(v) = 0 \leftrightarrow v \epsilon$ null($T - \lambda I$). QED. \\\\
+Example of eigenvalues/eigenvectors: \\\\
+$T \epsilon L(C^2, C^2)$ defined by $T(w,z) = (-z, w)$ then $(w,z)$ is an eigenvector corresponding to $\lambda$ if: \\
+$T(w,z) = \lambda(w,z)$\\
+$\leftrightarrow (-z,w) = (\lambda w, \lambda z)$\\
+$\leftrightarrow -z = \lambda, w = \lambda z$ \\
+Plug $w = \lambda z$ into equation one. \\
+$-z = \lambda(\lambda z)$\\
+$-z = \lambda^2 z$\\
+Without loss of generality, $z \neq 0$\\
+$-1 = \lambda^2$\\
+$+/- i = \lambda$ (note this gives us 2 eigenvalues!)\\\\
+Let's evaluate at $\lambda = i$: \\
+$-z = iw \rightarrow z = -iw$ \\
+$w = iz$\\
+Equation 2 is just -i times equation 1. \\ Solutions are thus, $(w,z) = (w, -iw) = (1, -i)w$\\\\
+Let's evaluate at $\lambda = -i$:\\
+$-z = -iw \rightarrow z = iw$\\
+$w = -iz$\\
+Equation 2 is i times equation 1. \\
+Solutions are thus, $(w,z) = (w, iw) = (1, i)w$\\\\
+\textbf{Theorem}: Let $T \epsilon L(V,V).$ Let $\lambda_1, ..., \lambda_m$ be distinct eigenvalues for $T$ and let $v_1,..., v_n$ be corresponding eigenvectors. These $v's$ are linearly independent. \\
+\textbf{Corollary}: If n = dim V then $T$ has at most $n$ many eigenvalues. \\
+\textbf{Proof of Theorem}: By induction on m! Assume that $v_1,..., v_{m-1}$ are independent. Suppose $a_1v_1 + ... + a_{m-1}v_{m-1}+a_mv_m = 0$. Apply $T$, $a_1\lambda_1v_1 + ... + a_{m-1}\lambda_{m-1}v_{m-1}+a_m\lambda_mv_m = 0$. By inductive hypothesis, $a_1(\lambda_1 \lambda_m)=0 ... a_{m-1}(\lambda_{m-1}-\lambda_m)=0$. Note that $(\lambda_{m-1}-\lambda_m)$ is nonzero by distinctness! Thus, $a_1 = ... = a_{m-1} = 0$. So, $a_m$ must also be $0$. So $v_1,..., v_m$ are independent. 
+
+
+\end{document}
