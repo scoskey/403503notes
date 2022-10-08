@@ -1,0 +1,32 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{10.06 Notes}
+\author{Math 403/503}
+\date{October 2022}
+
+\begin{document}
+
+\maketitle
+
+\section{Existence of Eigenvalues}
+Over scalar field $F = C$, we will see that every linear map $T \epsilon L(V)$ does have eigenvalues. The main fact about $C$ that we need is that any polynomial equation $a_0+a_1z+...+a_nz^n= 0$ has solutions for $z$ in $C$ (Fundamental Theorem of Algebra). In $L(V,V)$, operators $T$ may of course be added and scaled and more over they can be composed and thus can be iterated. Given any $T$, things like $\alpha T, \alpha T + \beta T, T^2, \alpha T^2, $ etc. all exist in $L(V,V)$. In general you can get any polynomial in the symbol $T$: 
+$\alpha_0 I + \alpha_1 T + \alpha_2 T^2 + ... + \alpha_n T^n$. This is called $?(T)$ where $p(z) = a_0 + a_1z + ... + a_nz^n$ and $P(T)$ lives in $L(V,V)$. \\\\
+Example: Fix $T(w,z) = (-z,w)$. Fix $p(x) = 8 +3x-2x^2$. Then we can get an operator, $p(T) = 8I + 3T - 2T^2$. Note $P(T)$ is actually the operator. $P(T)(w,z) = 8(w,z) + 3(-z,w) - z(-w,-z) = (10w - 3z, 3w+10z)$. \\\\
+\textbf{Theorem}: Let $V$ be finite dimensional vector space over $C$ and let $T \epsilon L(V,V)$. Then $T$ has an eigenvalue. \\
+\textbf{Proof}: Let $v \epsilon V$ be any nonzero vector. Start listing the iterated applications of $T$ to $v: v, Tv, T^2v, T^3v, ...$ eventually this list will become linearly dependent (at the latest when it's length surpasses dim V). So say $a_0v + a_1Tv + a_2T^2v + ... + a_mT^mv = 0$. This is a polynomial $p(z)$ applied to $T$ applied to $v$, equalling zero. Since we are over $C$, this polynomial factors completely: $a_m(T - \alpha_1 I)(T-\alpha_2 I)...(T-\alpha_m I)v = 0$. It must therefore be the case that at least 1 of the factors $T - \alpha_j I$ has a nontrivial null space. In particular the corresponding $\alpha_j$ is an eigenvalue of $T$. QED. \\\\
+Example that supports proof above: Say maybe $v, Tv, T^2v$ is linearly dependent and you find $2v - 3Tv + 1T^2v = 0$. $T^2v - 3Tv + 2Tv = 0 \leftrightarrow z^2-3z+2 = 0$. This factors into $(z-2)(z-1)=0$. \\
+$(T-I) \circ (T-2I)v = 0$\\
+Two cases...\\
+1. $w = (T-2I)v = 0$ \\
+$\rightarrow 2$ is an eigenvalue. \\
+2. $w \neq 0$ but $(T-I)w = 0$\\
+$\rightarrow 1$ is an eigenvalue. Note that in both cases we have an eigenvalue! \\\\
+When we work in $L(V,V)$ it makes sense to consider the same basis in both the domain and co-domain side when forming matrices. \\\\
+$T\epsilon L(V,W)$ basis $v_1, ..., v_n$ and basis $w_1,...,w_n$. This gives us a matrix with $v's$ along the top and $w's$ along the side with dimensions being $mxn$. \\\\
+$T\epsilon L(V,V)$ basis $v_1,...,v_n$. This gives us a matrix with $v_1,...,v_n$ entries along the top and side. \\\\
+We now want to investigate the special situation when the matrix of $T$ with respect to the basis $v_1,...,v_n$ is upper triangular. A matrix being upper triangular means $Tv_j \epsilon$ span($v_1,..., v_j$) for all $j$. The following is a corollary of the existence of eigenvalues over $C$: \\
+\textbf{Theorem}: Let $V$ be finite dimensional over $C$ and $T\epsilon L(V,V)$. There exists a basis $v_1,...,v_n$ of $V$ such that the matrix of $T$ in this basis is upper triangular. \\
+\textbf{Proof Sketch}: We know $T$ has an eigenvalue $\lambda$. So null($T-\lambda I$) is nonzero if range($T-\lambda I) \neq V$. It also happens that range($T- \lambda I$) is an invariant subspace for $T$. Because if $U$ is in range($T- \lambda I$) then $Tu = Tu - \lambda u + \lambda u = (T- \lambda I)u + \lambda u$. Note that both terms in the final expression exists in the range($T- \lambda I$). So we may assume inductively that $T$ restricted by the range($T- \lambda I$) has an upper triangular matrix with respect to some basis $u_1,...,u_m$. Now extend $u_1,...,u_m$ to a basis of $V$ with new vectors $v_1,...,v_k$. Then $Tv_j = Tv_j - \lambda v_j + \lambda v_j$. Note that the first two terms exist in range($T- \lambda I$) so span($u_1,...,u_m$). In particular $Tv_j$ is in the span($u_1,...,u_m,v_1,...,v_j$). So the matrix is triangular in this basis. QED. 
+
+\end{document}
