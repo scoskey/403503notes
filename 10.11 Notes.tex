@@ -1,0 +1,70 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+
+\title{10.11 Notes}
+\author{Math 403/503 }
+\date{October 2022}
+
+\begin{document}
+
+\maketitle
+
+\section{Diagonalization}
+Recall that $T$ has an eigenvalue $\lambda$ if null($T-\lambda I$) is not the zero space. Any nonzero element of null($T-\lambda I$) is called an eigenvector corresponding to $\lambda$. We proved that over a scalar field $C$, every operator on a finite dimensional vector space has an eigenvalue (and at most dim V many eigenvalues). We proved a corollary that every operator over $C$ has an upper triangular matrix with respect to some basis. This then begs the question, does every operator over $C$ have a diagonal matrix with respect to some (really special) basis? \\\\
+First we give the following review fact: Suppose $T$ is an operator on $V$ which has an upper triangular matrix with respect to some basis $v_1,...,v_n$. Then $T$ is invertible if and only if the diagonal entries of the matrix are not $0$. \\
+Example: $A = \begin{bmatrix} 1&2&3\\0&2&3\\0&0&3 \end{bmatrix}$ then $A^{-1} = \begin{bmatrix}
+    1&?&?\\0&1/2&?\\0&0&1/2
+\end{bmatrix}$
+Because if we multiply the two together it gives us entries of $1$ along the diagonal. But if a matrix $A$ were to have some diagonal entry equal to $0$ it would not be invertible because we would have $1/0$ in the corresponding entry. This helps us establish the following theorem. \\\\
+\textbf{Theorem}: Suppose $T \epsilon L(V,V)$ has an upper triangular matrix with respect to some basis. Then the eigenvalues of $T$ are precisely the diagonal entries of the matrix. \\
+Example: $A = \begin{bmatrix}
+    2&1&0\\0&5&3\\0&0&8
+\end{bmatrix} \rightarrow$ eigenvalues are $2, 5, 8$. The reason is as follows; $A - \lambda I = \begin{bmatrix}
+    2 - \lambda & 1&0\\ 0&5-\lambda & 3\\0&0&8-\lambda
+\end{bmatrix}$
+This will be noninvertible and therefore have a nontrivial null space whenever $2 - \lambda = 0$ or $5 - \lambda = 0$ or $8 - \lambda = 0$. \\\\
+\textbf{Proof}: Let $v_1, ..., v_n$ be the basis for which the matrix of $T$ is triangular: Then $A$ is a matrix with $\alpha_1,...,\alpha_n$ in the diagonal entries and is upper triangular. Then $T-\lambda I$ has matrix $A - \lambda I$ where the diagonal entries are now $\alpha_1 - \lambda,..., \alpha_n - \lambda$. Leaving $\lambda = \alpha_1, ..., \alpha_n$ by the fact above. QED. \\
+Notation: Given an operator $T$ and an eigenvalue $\lambda$ of $T$, the \underline{eigenspace} of $T$ corresponding to $\lambda$ is $E(T, \lambda) =$ null($T-\lambda I)$. That is, the subspace of all eigenvectors corresponding to $\lambda$, together with the $0$ vector. $E(T, \lambda)$ is an example of an invariant subspace for $T$. In fact, $T$ restricted by $E(T, \lambda)$ is simply the map that multiplies by $\lambda$. \\
+Example: Let $T$ have matrix $\begin{bmatrix}
+    8&0&0\\0&5&0\\0&0&5
+\end{bmatrix}$ (in standard basis). We know $T$ has eigenvalues $8,5$. \\ $\begin{bmatrix}
+    8&0&0\\0&5&0\\0&0&5
+\end{bmatrix} \begin{bmatrix}
+    1\\0\\0
+\end{bmatrix} = \begin{bmatrix}
+    8\\0\\0
+\end{bmatrix}$\\
+$E(T,8) =$ the line through $\begin{bmatrix}
+    1\\0\\0
+\end{bmatrix}$\\
+$\begin{bmatrix}
+    8&0&0\\0&5&0\\0&0&5
+\end{bmatrix} \begin{bmatrix}
+    0\\1\\0
+\end{bmatrix} = \begin{bmatrix}
+    0\\5\\0
+\end{bmatrix}$\\
+$\begin{bmatrix}
+    8&0&0\\0&5&0\\0&0&5
+\end{bmatrix} \begin{bmatrix}
+    0\\0\\1
+\end{bmatrix} = \begin{bmatrix}
+    0\\0\\5
+\end{bmatrix}$\\
+$\begin{bmatrix}
+    8&0&0\\0&5&0\\0&0&5
+\end{bmatrix} \begin{bmatrix}
+    0\\y\\z
+\end{bmatrix} = 5 \begin{bmatrix}
+    0 \\y\\z
+\end{bmatrix}$\\
+$E(T,5) = $ plane with basis $\begin{bmatrix}
+    0\\1\\0
+\end{bmatrix}, \begin{bmatrix}
+    0\\0\\1
+\end{bmatrix}$\\\\
+\textbf{Theorem}: The sum of the eigenspaces of $T$ makes a direct sum for $\lambda_1, ..., \lambda_m$ distinct values of $T$. \\\\
+\textbf{Proof}: We have proved this before: If $v_1,...,v_m$ are eigenvevtors of $\lambda_1,..., \lambda_m$ respectively, then $v_1,...,v_m$ is independent. We need to show that if $U_1 \epsilon (T, \lambda_1), ..., U_n \epsilon E(T, \lambda_m)$ and $U_1 + ... + U_m = 0$ then $U_1 = ... = U_m = 0$. But if $U_i \epsilon E(T, \lambda_i)$ and $U_i \neq 0$ then it is an eigenvector corresponding to $\lambda_i$. So by the above fact if $U_1 + ... + U_m = 0$ the only possibility is $U_1 = ... = U_m = 0$. QED. \\\\
+Preview of next result: If when we take the direct sum of $E(T, \lambda_1) + ... + E(T, \lambda_m)$ we get the whole space $V$, then $T$ is diagonal in some basis (consists of eigenvectors). And conversely. 
+\end{document}
