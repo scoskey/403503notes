@@ -1,0 +1,93 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+
+\title{10.13 Notes}
+\author{Math 403/502}
+\date{October 2022}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+Calendar says week 10 is the next quiz. He is considering making it week 11. \\\\
+\textbf{Theorem}: Let $V$ be a finite dimensional and $L \epsilon (V,V)$. Then there is a basis of $V$ in which $T$ has a diagonal matrix if and only if, $E(T, \lambda_1)$ direct summed with all the other $E(T, \lambda_n)$ terms is equal to $V$ where $\lambda_1,..., \lambda_n$ are distinct eigenvalues of $T$. \\\\
+\textbf{Proof}: $\rightarrow$ Suppose $v_1,..., v_n$ is a basis of $V$ and $T$ is diagonal with respect to this basis. Then $T(v_j) = d_iv_i$ for all $i$. This means that the entries along the diagonal ($d_i's$) are all eigenvalues and the $v_i's$ are all eigenvectors of $T$. Thus, each $v_i$ lies in some eigenspace $E(T, d_i)$. Thus, the direct some of the E's mentioned above contains a spanning set so itself spans $V$. \\
+$\leftarrow$ Suppose $\lambda_1, ..., \lambda_n$ are the eigenvalues of $T$ and $E(T, \lambda_1)$ direct summed with all the other $E(T, \lambda_n)$ terms is equal to $V$. Then we can choose bases for each $E(T, \lambda_j)$ and combine these bases together to get a basis $v_1,...,v_n$ consisting entirely of eigenvectors of $T$. Then with respect to this basis, $Tv_j$ is always a multiple of $v_j$, so the matrix of $T$ is diagonal. QED. \\\\
+Recall we talked about invariant subspaces and how we might wish to breakdown $V$ into several invariant subspaces on which $T$ is very simple to understand. In the case of the theorem above we have succeeded fully, because $E(T, \lambda_j)$ is an invariant subspace and more strongly $T$ is just scalar multiplication: $T(v) = \lambda_jv$ on that space! The net thing to worry about is what to do when this isn't satisfied and the $E(T, \lambda_j)'s$ don't sum up to $V$...\\\\
+\textbf{Corollary}: If $T$ is an operator on $V$ and $T$ has $n = dim V$ distinct eigenvalues, then $T$ has a basis in which it is diagonal. \\
+\textbf{Proof}: Each $E(T, \lambda_j)$ contributs at least 1 dimension to the sum. With n summands, the sum is n-dimensions or all of $V$. QED. \\\\
+Example: $T(x,y) = (x+y, y)$, $T$ has matrix $\begin{bmatrix} 1&1\\0&1\end{bmatrix}$. We know that $\lambda = 1$ is the only eigenvalue! We find $v = \begin{bmatrix}
+    1\\0
+\end{bmatrix}$ is the only eigenvector (up to scalar multiple). $E(T,1) =$ span($\begin{bmatrix}
+    1\\0
+\end{bmatrix} \neq V$. \\\\
+Example: Let $T(x, y,z) = (2x+y, 5y+3z, 8z)$. $T$ has matrix $\begin{bmatrix}
+    2&1&0\\0&5&3\\0&0&8
+\end{bmatrix}$. We know $\lambda_1 = 2, \lambda_2 = 5, \lambda_3 = 8$. We know it will be diagonalizable by corollary. To do so: $E(T,2) =$ null$\begin{bmatrix}
+    0&1&0\\0&3&3\\0&0&6
+\end{bmatrix}$. Then we compute the null space of this and get it to be $\begin{bmatrix}
+    x\\0\\0
+\end{bmatrix} = \begin{bmatrix}
+    1\\0\\0
+\end{bmatrix}x = $ span ($\begin{bmatrix}
+    1\\0\\0
+\end{bmatrix}$). $E(T,5) =$ null$\begin{bmatrix}
+    -3&1&0\\0&0&3\\0&0&3
+\end{bmatrix}$. Then we compute the null space of this and get it to be $\begin{bmatrix}
+    1/3y\\y\\0
+\end{bmatrix} = \begin{bmatrix}
+    1/3\\1\\0
+\end{bmatrix}y = $ span ($\begin{bmatrix}
+    1\\3\\0
+\end{bmatrix}$). $E(T,8) =$ null$\begin{bmatrix}
+    -6&1&0\\0&-1&3\\0&0&0
+\end{bmatrix}$. Then we compute the null space of this and get it to be $\begin{bmatrix}
+    1/6z\\1\\1
+\end{bmatrix} = \begin{bmatrix}
+    1\\6\\6
+\end{bmatrix}z = $ span ($\begin{bmatrix}
+    1\\6\\6
+\end{bmatrix}$). So in basis  $\begin{bmatrix}
+    1\\0\\0
+\end{bmatrix}, \begin{bmatrix}
+    1\\3\\0
+\end{bmatrix}, \begin{bmatrix}
+    1\\6\\6
+\end{bmatrix}, T$ has matrix $\begin{bmatrix}
+    2&0&0\\0&5&0\\0&0&8
+\end{bmatrix}$. What happens when things go wrong? When it isn't diagonalizable? \\
+Example: $T = \begin{bmatrix}
+    2&3&4\\0&5&1\\0&0&5
+\end{bmatrix}$. We know $\lambda_1 = 2, \lambda_2 = 5$ are the eigenvalues. $E(T,2) = $null$\begin{bmatrix}
+    0&3&4\\0&3&1\\0&0&3
+\end{bmatrix} =$ span ($\begin{bmatrix}
+    1\\0\\0
+\end{bmatrix}$). $E(T,5) =$ null$\begin{bmatrix}
+    -3&3&4\\0&0&1\\0&1&0
+\end{bmatrix} =$  span ($\begin{bmatrix}
+    1\\1\\0
+\end{bmatrix})$. So the direct sum of $E(T,2)$ and $E(T,5) \neq V$. Thankfully there is a "generalized eigenvector" it lies in null$\begin{bmatrix}
+    -3&3&4\\0&0&1\\0&0&0
+\end{bmatrix}$. It further has the property that $(T-5I) v_3 = v_ 2$. It is $ = v_3 = \begin{bmatrix}
+    1\\0\\1
+\end{bmatrix}$\\
+$\begin{bmatrix}
+    -3&3&4\\0&0&1\\0&0&0
+\end{bmatrix}\begin{bmatrix}
+    1\\0\\1
+\end{bmatrix} = \begin{bmatrix}
+    1\\1\\0
+\end{bmatrix} = v_2$. In the basis $\begin{bmatrix}
+    1\\0\\0
+\end{bmatrix}, \begin{bmatrix}
+    1\\1\\0
+\end{bmatrix}, \begin{bmatrix}
+    1\\0\\1
+\end{bmatrix}, T$ has matrix: $\begin{bmatrix}
+    2&0&0\\0&5&1\\0&0&5
+\end{bmatrix}$. Because of the equation above it is nearly diagonalizable. 
+    
+
+\end{document}
