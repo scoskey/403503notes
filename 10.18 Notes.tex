@@ -1,0 +1,88 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+
+\title{10.18}
+\author{Math 403/503}
+\date{October 2022}
+
+\begin{document}
+
+\maketitle
+
+\section{Generalized Eigenvectors}
+Our schedule is as follows: This is week 9 so it's the last week of material in this "unit". Next week is quiz week. This means on Tuesday we will have class and do a catch up/review. On Wednesday the take-home quiz will be released. There will be no class on Thursday. The quiz will be due Monday night. \\\\
+Recall we have a goal of, given an operator $T$, decomposing $V$ into invariant subspaces where $T$ behaves quite simply. The best situation is when $V = E(\lambda_1, T) + ... + E(\lambda_m, T)$ where the terms are a direct sum. In this case $T$ acts as a scalar on each of these subspaces and overall $T$ acts as a diagonal matrix with respect to the basis of eigenvectors. But this is not always the case (more on this later... chapters 6 and 7). For now we will jump forward to chapter 8 where we show generalized eigenspaces fix this problem at least if we are over $C$. \\\\
+Recall $E(\lambda, T) =$ null($T - \lambda I)$. We now define $G(\lambda, T) =$ the union over $j$ of the null space of [$(T-\lambda I)^j$]. This is called the generalized eigenspace of $T$ corresponding to $\lambda$. Any $v \epsilon G(\lambda, T)$ other than $0$ is called a generalized eigenvector of $T$ corresponding to $\lambda$. Note $E(\lambda, T)$ is a proper subspace of $G(\lambda, T)$. \\\\
+\textbf{Lemma}: $G(\lambda, T)$ is a subspace of $V$ and it is $T$ - invariant. \\\\
+\textbf{Proof Sketch}: Note that null($T - \lambda I$) is a proper subspace of null($T-\lambda I)^2$ which is a proper subspace of... this is because $(T-\lambda I) = 0 \rightarrow (T - \lambda I)(T- \lambda I) = 0 \rightarrow ... $ in this chain only at the most n of the proper subspace symbols can be proper inclusions, where n = dim V. In fact it turns out the union over j going from 1 to infinity of the null space of $(T-\lambda I)^j =$ null[$(T-\lambda I)^n$] so $G(\lambda, T)$ is a subspace. For invariance assume $(T - \lambda I)^2 v = 0$ we will show $(T - \lambda I)^2 Tv = 0$. \\\\
+$(T- \lambda I)^2 Tv$\\
+$ = (T^2 - 2\lambda T + \lambda ^2 I) Tv $\\
+$= (T^3 - 2\lambda T^2 + \lambda^2 T) v$\\
+$= T(T^2 - 2\lambda T + \lambda ^2 I) v$\\
+$= T0$\\
+$=0$\\\\
+The same goes for all powers. So null$((T-\lambda I)^j)$ is T-invariant for any $j$ for $G(\lambda, T)$ is T-invariant. \\\\
+Example: $A = \begin{bmatrix} 
+2&3&4\\0&5&1\\0&0&5
+\end{bmatrix}, E(2,T) = $ null $\begin{bmatrix}
+    0&3&4\\0&3&1\\0&0&3
+\end{bmatrix} = ... $ span $\begin{bmatrix}
+    1\\0\\0
+\end{bmatrix}$\\\\
+$G(2,T) = ?$\\\\
+null $\begin{bmatrix}
+    0&3&4\\0&3&1\\0&0&3
+\end{bmatrix} \begin{bmatrix}
+    0&3&4\\0&3&1\\0&0&3
+\end{bmatrix} = $ null $\begin{bmatrix}
+    0&9&15\\0&9&6\\0&0&9
+\end{bmatrix} = ...$ span $\begin{bmatrix}
+    1\\0\\0
+\end{bmatrix}$\\\\
+$G(2,T) = E(2,T) =$ span $\begin{bmatrix}
+    1\\0\\0
+\end{bmatrix}$\\\\
+$E(5,T) = $ null $\begin{bmatrix}
+    -3&3&4\\0&0&1\\0&0&0
+\end{bmatrix} = ... = $ span $\begin{bmatrix}
+    1\\1\\0
+\end{bmatrix}$\\\\
+$G(5,T) = ?$\\\\
+null$\begin{bmatrix}
+    -3&3&4\\0&0&1\\0&0&0
+\end{bmatrix}\begin{bmatrix}
+    -3&3&4\\0&0&1\\0&0&0
+\end{bmatrix} = $ null$\begin{bmatrix}
+    9&-9&-9\\0&0&0\\0&0&0
+\end{bmatrix} =$ null $\begin{bmatrix}
+    1&-1&-1\\0&0&0\\0&0&0
+\end{bmatrix}, \begin{bmatrix}
+    x\\y\\z
+\end{bmatrix} = \begin{bmatrix}
+    1\\1\\0
+\end{bmatrix}y + \begin{bmatrix}
+    1\\0\\1
+\end{bmatrix}z = $ span $(\begin{bmatrix}
+    1\\1\\0
+\end{bmatrix}, \begin{bmatrix}
+    1\\0\\1
+\end{bmatrix})$ \\\\
+What about null $(A - SI)$?\\\\
+null $\begin{bmatrix}
+    9&-9&-9\\0&0&0\\0&0&0
+\end{bmatrix} \begin{bmatrix}
+    -3&3&4\\0&0&1\\0&0&0
+\end{bmatrix} = $ null $\begin{bmatrix}
+    -27&27&27\\0&0&0\\0&0&0
+\end{bmatrix} =$ span $\begin{bmatrix}
+    1\\1\\0
+\end{bmatrix}, \begin{bmatrix}
+    1\\0\\1
+\end{bmatrix}$\\
+$G(5,T) = $ span ($\begin{bmatrix}
+    1\\1\\0
+\end{bmatrix}, \begin{bmatrix}
+    1\\0\\1
+\end{bmatrix}$). So $V = C^3 = $ the direct sum of $E(2,T)$ and $E(5,T)$. So ew aim to prove that for any $T$ over a finite dimensional vector space, $V =$ the direct sum of $G(\lambda_1, T) ... G(\lambda _m, T)$ and furthermore show $T$ has a very simple action on its $G(\lambda_j, T)$'s so this will complete the study of $T$. 
+\end{document}
