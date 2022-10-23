@@ -1,0 +1,29 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{10.20 Notes}
+\author{Math 403/503}
+\date{October 2022}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+Today's goal: To discuss generalized eigenspaces, give proof sketches of 2 key terms, and then what they mean for analyzing the original linear operator $T$. 
+\section{Notes} 
+We are working towards: \\ \textbf{Theorem}: $V = G(\lambda_1, T) + ... + G(\lambda_m, T)$ where this is a direct sum and $\lambda_1, ..., \lambda_m$ are eigenvalues of $T$. Note that $T \epsilon L(V,V)$ and $V$ is finite dimensional. \\\\
+\textbf{Part 1}: $G(\lambda_1, T) + ... + G(\lambda_m, T)$ makes a direct sum. \\
+\textbf{Proof Sketch}: As we saw in the case of the eigenspaces $E(\lambda_j, T)$, this amounts to showing that if $v_1 \epsilon G(\lambda_1, T)...v_m \epsilon G(\lambda_m, T)$ (nonzero) then $v_1, ..., v_m$ is independent. So assume that $a_1v_1 + ...+a_mv_m = 0$. We will show $a_j = 0$ for all $j$. Focus on $v_1$ to start $v_1 \epsilon G(\lambda_1, T) =$ null $(T-\lambda_1 I)^n$. Let $k$ be such that $v_1 \epsilon$ null$(T-\lambda_1 I)^k$ but $v_1$ does not exist in null$(T-\lambda_1 I)^{k-1}$. Hit the equation $a_1v_1 + ...+a_mv_m = 0$ with the map $(T-\lambda_1 I)^{k-1}(T-\lambda_2 I)^n...(T-\lambda_n I)^n$. The result is $(T-\lambda_1 I)^{k-1}(T-\lambda_2 I)^n...(T-\lambda_n I)^na_1v_1 = 0 \rightarrow (T-\lambda_2 I)^n...(T\lambda_n I)^n w = 0 \rightarrow a_1(\lambda_1 -\lambda_2)^n...(\lambda_1-\lambda_m)^n w = 0$. Since we know the rest of the terms are not equal to zero we can conclude that $a_1 = 0$. Similarly, we can show any $a_j = 0$. Therefore, $v_1, ..., v_m$ is independent. QED. \\\\
+\textbf{Part 2}: $V= G(\lambda_1, T) + ... + G(\lambda_m, T)$ is a direct sum. \\
+\textbf{Proof Sketch}: The proof is by induction on the dimension of $V$. First we know an eigenvalue exists, call it $\lambda_1$. Now form $G(\lambda_1, T) =$ null $((T-\lambda_1 I)^n)$. Let $U=$ range $((T-\lambda_1 I)^n)$. Both bull and range are T-invariant by a lemma in the book, the null space and the range of an n-th power make a direct sum. Thus $V = G(\lambda_1, T) + U$ is a direct sum, where $U$ is T-invariant. $U$ has a smaller dimension than $V$ so we can apply the inductive hypothesis to $T$ restricted by $U$ to conclude $U$ is a direct sum of generalized eigensapces. Hence $V$ is too. QED. \\\\
+Next we need to investigate waht $T$ looks like on some $G(\lambda_1, T)$. If we can understand this then we can understand all of $T$ because will be a \underline{block matrix}. \\\\
+\textbf{Theorem}: For any $T$, any of its eigenvalues $\lambda_j$, we can find a basis for $T$ restricted by $G(\lambda_j, T)$ consisting of eigenvectors, plus, Jordan chains that terminate at eigenvectors by multiplying $T - \lambda_j I$. The proof that there exists such a basis is also by induction on the dimension of $V$. \\\\
+So what does it mean that we can find a basis like this for each $G(\lambda_j, T) $?
+\begin{itemize}
+    \item The matrix $A$ of $T$ in this basis (yes, the one with all the Jordan chains) consists of blocks $A_1, .., A_m$ down the diagonal, where each $A_j$ corresponds to $T$ restricted by $G(\lambda_j, T)$. 
+    \item Each block $A_j$ consists of 1 or more sub blocks, one sub block for each Jordan chain. 
+    \item The matrix on each sub block looks like a matrix with $\lambda_j$ down the diagonal and 1's on the super diagonal, but not in the first column. The first columbn in the top of the chain, as we know is an eigenvector $(T-\lambda I)v_1 = 0 \rightarrow Tv_1 = \lambda v_1$. Each subsequent column has a 1 and a $\lambda_j$ because $(T-\lambda_1)v_{1,l+1} = v_{1, l} \rightarrow Tv_{1, l+1} = \lambda v_{1, l+1} + 1 v_{1, l}$. 
+\end{itemize}
+We conclude that $T$ has a matrix with the $\lambda$'s down the diagonal in appropriate multiplicities, plus some 1's on the superdiagonal signaling chains of generalized eigenvectors. This is called Jordan Normal Form. 
+\end{document}
