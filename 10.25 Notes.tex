@@ -1,0 +1,34 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{10.25 Notes}
+\author{Math 403/503 }
+\date{October 2022}
+
+\begin{document}
+
+\maketitle
+
+\section{Review for Quiz}
+Quiz will be released sometime Wednesday, we will get an email announcement when it is. 
+\section{Outline of Topics}
+The material this quiz will cover goes all the way back to section 3D in the textbook.
+\begin{itemize}
+    \item Injectivity - null T = 0 
+    \item Surjectivity - range T = W 
+    \item Bijectivity - Both! And this implies that the inverse of T exists. 
+    \item Operators - If $V$ is finite dimensional and $T \epsilon L(V,V)$ then $T$ is injective if and only if $T$ is surjective if and only if $T$ is bijective. 
+    \item Dual Spaces - $V' = L(V,F)$, a dual basis means if $v_1, ..., v_n$ is a basis of $V$ then we let $\phi_1, ..., \phi_n$ be a basis of $V'$ where $\phi_i(v_j) = 1, i = j$ or $= 0, i \neq j$ 
+    \item Dual Operators - if $T \epsilon L(V,W)$ then $T' \epsilon L(V', W')$ is defined by $T'(\phi) = \phi \circ T$, the matrix of $T'$ is the transpose of the matrix of $T$. 
+    \item Dual Dimensions - dim null T' = dim W - dim range T, dim range T' = dim range T. \\
+    \textbf{Corollary}: Thus the rank of $A$ is equal to the rank of $A^{T}$
+    \item The eigenvalue/eigenvector definition  - $Tv = \lambda v. v \neq 0$\\
+    The \textbf{eigenspace} of $\lambda$ with respect to $T$: $E(\lambda, T) =$ null$(T-\lambda I)$ (this is all solutions to $Tv = \lambda v$. Eigenspaces are T-invariant and form a direct sum (independent).
+    \item Diagonalization - If $V$ is the direct sum of the eigenspaces, then there exists a basis of $V$ consisting of eigenvectors and $T$ is diagonal in this basis. 
+    \item Over $C$, eigenvalues always exist - Over $C$, a basis always exists in which $T$ is upper triangular. With an upper triangular matrix, the eigenvalues appear on the diagonal. 
+    \item Generalized eigenvectors satisfy $(T \lambda I)^j v = 0, j =$ any power, larger finds more general eigenvectors, $j$ may be as large as needed up to $n$, 
+    \item Generalized eigenspace - $G(\lambda, T) = $ null $(T - \lambda I)^n$, these form a direct sum (independent)
+    \item Jordan canonical form - Over $C$, $V =$ the direct sum of the generalized eigenspacees. Thus, there is a basis of $V$ consisting of generalized eigenvectors. In fact, we can find such a basis where the generalized eigenvectors come in \underline{chains} ending with the eigenvectors. Working in such a basis gives a matrix for $T$ consisting of \underline{Jordan blocks}. Note: diagonal is the special case where every Jordan block is one by one, so there is no room for 1's in the superdiagonal. 
+\end{itemize}
+
+\end{document}
