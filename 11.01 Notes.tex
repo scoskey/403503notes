@@ -1,0 +1,64 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+
+\title{11.01 Notes}
+\author{Math 403/503}
+\date{November 2022}
+
+\begin{document}
+
+\maketitle
+
+\section{Week 11 Inner Products}
+So far we have talked about vector spaces, meaning we have addition and scaling. But of course there are other operations that we could throw in such as the dot product which we know we can do in $R^n$: $(a,b,c) \dot (d,e,f) = ab + be + cf$ \\
+$v \dot w = \sum_{i=1}^{n} v_iw_i$. The dot product is a special case of what is called an inner product which maps $VxV \rightarrow F$. \\\\
+What is the dot product good for in $R^n$? It is used to identify orthogonal vectors (perpendicular). It is also used for projecting one vector onto a line or subspace orthogonally. \\\\
+\textbf{Key fact}: Two vectors $u, v \epsilon R^n$ are orthogonal if and only if $u \cdot v = 0$. \\\\
+\textbf{Proof}: $u$ and $v$ are orthogonal if and only if the triangle with corners: the tip of $u$, the origin, and the tip of $v$, is a right triangle. The sides of the triangle are: leg 1: $||u|| = \sqrt{\sum{u_i}^2}$, leg 2: $||v||$, hypotenuse: $||u -v||$\\\\
+The Pythagorean theorem further implies that this triangle is right if and only if $||u||^2 + ||v||^2 = ||u-v||^2$. \\ Continuing: $\leftrightarrow \sum{u_i^2} + \sum{v_i^2} = \sum{(u_i - v_i)^2} \\ \leftrightarrow \sum{u_i^2} + \sum{v_i^2} = \sum{(u_i^2 - 2u_iv_i + v_i^2)} \\ \leftrightarrow 0 = -2 \sum{u_iv_i} \\ \leftrightarrow 0 = u \cdot v$. QED.  \\\\
+Next the dot product may be used to project a vector $u$ onto the line through $v$ in a perpendicular way. To find the projection vector, we set $v$ as being perpendicular to the error vector (or the vector along which the projection falls) which is $u-cv$: \\
+$V \cdot (u - cv) = 0$\\
+$\leftrightarrow v\cdot u - cv \dot v = 0$\\
+$\leftrightarrow c = u\cdot v/||v||^2$\\
+Thus the projection is $ p = cv = u \cdot v/{||v||^2} * v$\\
+Example: Let $ u = \begin{bmatrix}
+4\\6\\4
+\end{bmatrix}, v = \begin{bmatrix}
+    1\\2\\3
+\end{bmatrix}$. We know $c = u \cdot v/||v||^2 = 28/14 = 2$. Thus $p = cv = 2v = \begin{bmatrix}
+    2\\4\\6
+\end{bmatrix}$. Then the error $w = u -cv = \begin{bmatrix}
+    4\\6\\4
+\end{bmatrix} - \begin{bmatrix}
+    2\\4\\6
+\end{bmatrix} = \begin{bmatrix}
+    2\\2\\-2
+\end{bmatrix}$. $w$ is orthogonal to $v$: $(2,2,-2) \dot (1,2,3) = 0$. \\
+Another way to look at it: we can decompose $u$ into a sum of something in the vector space spanned by $v (p=cv)$ and something orthogonal to that space $(w)$. $u = p+w $\\
+In future we will do this again but replacing $v$ with a basis of some subspace. We now embark on the general approach. \\
+\textbf{Definition}: An inner product space is a vector space $V$ equipped additionally with a map $< ., .> : V^2 \rightarrow F$ satisfying: 
+\begin{itemize}
+    \item positivity $<u,u> \geq = 0$
+    \item definiteness $<u,u> = 0 \leftrightarrow u = 0$
+    \item additivity $<u + u', v> = <u, v> + <u', v>$
+    \item scalar multiples 
+    \item conjugate symmetry 
+\end{itemize}
+The reason for the conjugation?? Well, we want $||u||^2 = <u,u>$. So, $||u||^2 = <u,u>$. This is true for real numbers and the dot product $\sum{u_i^2} = \sum{u_i \cdot u_i}$. However over $C$ the norm $|z^2| \neq Z\cdot Z$, instead $|z^2| = Z \cdot \overline{Z}$. So $||u^2|| = <u,u> \rightarrow \sum{(u_i)^2} \rightarrow \sum{u_i \overline{u_i}}$.
+This suggests that we should actually define $<u,v> = \sum{u_i \overline{v_i}}$
+So this leads to property 5 being what it is. \\\\
+Examples of inner product spaces:
+\begin{itemize}
+    \item $R^n$ or $C^n$ with $<u,v> =$ the dot product 
+    \item $V = $ the space of continuous function on the unit interval $[0,1]$ with inner product $<f,g> = \int_{0}^{1} f(x) \overline{g(x)} \,dx$
+    \item $V =$ the space of polynomials $P(R)$, $<p,q> =\int_{0}^{\inf} p(x)q(x) e^{-x} \,dx $ 
+\end{itemize}
+Several things that were theorems about the dot product now become definitions.\\ 
+\textbf{Definition}: If $V$ is an inner product space, $v \epsilon V$, the norm of $v$ is defined as $||v|| = \sqrt{<v,v>}$ pr $||v||^2 = <v,v>$ \\ 
+\textbf{Definition}: If $V$ is an inner product space and $u,v \epsilon V$, then $u$ is orthogonal to $v$ if $<u,v> = 0$. \\\\
+The pythagorean theorem for inner product spaces: $||u+v||^2 = ||u||^2 + ||v||^2$ whenever $u,v$ are orthogonal. \\\\
+\textbf{Proof}: $||u+v||^2 = <u+v, u+v> \\ = <u,u> + <u,v> + <v,u> + <v,v>$ (by additivity axiom and additivity for the second coordinate) \\
+$=||u||^2 + 0 + 0 + ||v||^2$ (by symmetry). QED. \\\\
+Next comment is, all our work about projecting $u$ orthogonally onto the line through $v$ may be done in this abstract context too. 
+\end{document}
