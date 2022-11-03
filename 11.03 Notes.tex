@@ -1,0 +1,57 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+
+\title{11.03 Notes}
+\author{Math 403/503}
+\date{November 2022}
+
+\begin{document}
+
+\maketitle
+
+\section{From Last Time...}
+Pythagorean Theorem generalized: Suppose $v_1,..,v_n$ is a family of pairwise orthogonal vectors: $<v_i, v_j> = 0, i \neq j$. Then $||v_1||^2 + ||v_2||^2 + ... + ||v_n||^2 = ||v_1 + ... + v_n||^2$ \\\\
+Projection in inner product space: If $u,v \epsilon V$, then $u$ may be written as $u = cv + w$ where $<v,w> = 0$ by setting $c = <u,v> / ||v||^2$. Proof is the same as it was for dot products. \\\\
+We next present two major inequalities that are repeatedly useful in working with inner product spaces. 
+\begin{itemize}
+    \item Cauchy-Schwarz Inequality: $|<u,v>| \leq (||u||)(||v||)$
+    \item Triangle Inequality: $||u+v|| \leq ||u|| + ||v||$
+\end{itemize}
+\textbf{Proof of Cauchy-Schwarz}: Project $u$ onto the line through $v$ to write $u = \frac{<u,v>}{||v||^2} v+w$ where $<v,w> = 0$. By Pythagorean Theorem: $||u||^2 = ||\frac{<uv>}{||v||^2} + ||w||^2 $\\
+$= \frac{|<u,v>|^2}{||v||^4} ||v||^2 + ||w||^2$\\
+$= \frac{|<u,v>|^2}{||v||^2} + ||w||^2$\\
+$\geq \frac{|<u,v>|^2}{||v||^2}$\\\\
+\textbf{Proof of Triangle}: Calculate: $||u+v||^2 = <u,v> + <u+v>$ \\
+$ = <u,u> + <u,v> + <v,u> + <v,v>$\\
+$ = ||u||^2 + <u,v> + <v,u> + ||v||^2$\\
+$\leq ||u||^2 + ||<u,v> + <v,u>|| + ||v||^2$\\
+$\leq ||u||^2 + |<u,v>| + |<v,u>| + ||v||^2$\\
+$= ||u||^2 + |<u,v>| + |\overline{<u,v>}| + ||v||^2$\\
+$\leq||u||^2 + 2||u|| ||v|| + ||v||^2$\\
+$= (||u|| + ||v||) ^2$\\
+Therefore, $||u+v||^2 = ||u|| + ||v||$. 
+\section{Today's Notes}
+We next use orthogonality to create a very nice bases for inner product spaces... Recall the standard basis of $F^n$ is not only an independent list but in fact the vectors are orthogonal and of unit length. \\
+\textbf{Definition}: Let $V$ be an inner product space and $v_1,...,v_n$ in $V$. We say $v_1,...,v_n$ is an \underline{orthonormal list} if $<v_i, v_j> = 1$ if $i = j$ or $ = 0$ if $i \neq j$.  In other words, they are pairwise orthogonal and of unit length. $v_1,...,v_n$ is an orthonormal basis (ONB) if it is an orthonomal list and a basis of $V$. Note: The standard basis is orthonormal. \\
+Example: The basis $\begin{bmatrix} 
+\frac{1}{\sqrt{3}}\\\frac{1}{\sqrt{3}}\\\frac{1}{\sqrt{3}}
+\end{bmatrix}, \begin{bmatrix}
+    \frac{-1}{\sqrt{2}}\\\frac{-1}{\sqrt{2}}\\0
+\end{bmatrix}, \begin{bmatrix}
+    \frac{1}{\sqrt{6}}\\\frac{1}{\sqrt{6}}\\\frac{-2}{\sqrt{6}}
+\end{bmatrix}$ is an ONB. \\\\
+\textbf{Proposition}: An orthonormal list is always independent. Thus to be a basis it only needs to have the right length, namely dim $V$. Note - this is a very strong form of independence. \\\\
+\textbf{Proof}: Let $v_1,...,v_n$ be orthonormal. Suppose $a_1v_1 + ... + a_nv_n = 0$, then $||a_1v_1 + ... + a_nv_n||^2 = 0$. The Pythagorean Theorem says: $||a_1v_1||^2 + ... + ||a_nv_n||^2 = 0$\\
+$ \rightarrow |a_1|^2 + ... + |a_n|^2 = 0 $\\
+$\rightarrow a_1 = a_2 = ... = a_n = 0$. QED. \\\\
+We now take up the mission of finding an ONB in a given $V$. Specifically we will start with any basis $v_1,...,v_n$ and apply projections repeatedly to convert it into an orthonormal basis. \\\\
+Given $v_1,...,v_n$ a basis of $V$. First replace $v_1$ with $ e_1 = \frac{v_1}{||v_1||}$. Next we want to replace $v_2$ with something orthogonal to $e_1$: project $v_2$ onto line through $e_1$: $v_2 = \frac{<v_2, e_1>}{||e_1||^2} e_1 + w$ where $<e_1, w> = 0$. Set $e_2 = \frac{w}{||w||} = \frac{v_2 - <v_2, e_1> e_1}{||v_2 - <v_2, e_1>e_1||} $. Third, we replace $v_3$ with something orthogonal to $e_1$ AND $e_2$ by projection: $v_3 = ce_1 + de_2 + w_3$ where $<e_1, w_1> = 0$ AND $<e_2, w_3> = 0$. We need to solve for the constants $c, d$: $<v_3 - ce_1 - de_2, e_1> = 0$\\
+$\leftrightarrow <v_3, e_1> - c<e_1,e_1> - d<e_2, e_1> = 0$\\
+$\leftrightarrow c = <v_3, e_1>$\\
+$<v_3 - ce_1 -de_2, e_2> = 0$\\
+$\leftrightarrow d = <v_3, e_2>$. \\
+So $v_3 = <v_3, e_1>e_1 + <v_3, e_2>e_2 + w_3$. Set $e_3 = \frac{v_3 - <v_3, e_1>e_1 - <v_3, e_2>e_2}{||v_3 - <v_3, e_1>e_1 - <v_3, e_2>e_2||}$. The rest of the process is the analog of this formula. \\\\
+\textbf{Gram-Schmidt Process}: Given a basis $v_1, ..., v_n$. We produce an orthonormal basis $e_1, ..., e_n$ using the iterative definition: $e_j = \frac{v_j - <v_j, e_1>e_1 - ... - <v_j, e_{j-1}>e_{j-1}}{||v_j - <v_j, e_1>e_1 - ... - <v_j, e_{j-1}>e_{j-1}||}$. \\\\
+In the process we also learned how to project a vector $v$ onto a subspace spanned by orthonormal vectors $e_1, ..., e_j$. The projection of $v$ to span$(e_1, ..., e_j)$ is: $p = <v, e_1>e_1 + ... + <v, e_j>e_j$. If you have an ONB $e_1, ..., e_n$ then $v=<v, e_1>e_1 + ... + <v, e_n>e_n$. 
+\end{document}
