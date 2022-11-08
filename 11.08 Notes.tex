@@ -1,0 +1,43 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{11.08 Notes}
+\author{Math 403/503}
+\date{November 2022}
+
+\begin{document}
+
+\maketitle
+
+\section{Homework Hint}
+Use sin and cos identities to solve 5. 
+\section{Projections}
+In the proof of Gram-Schmidt we showed that if $e_1, ..., e_j$ is an orthonormal list and $v$ is any vector, then $v$ can be written as $v = <v, e_1>e_1 + ... + <v,e_j>e_j + w$ where $w$ is orthogonal to $e_1, ..., e_j$.\\
+Why does it work? \\
+$<w,e_j> = < v - <v, e_1>e_1 - ... - <v, e_j>e_j, e_j>$\\
+$=<v,e_i> - <v,e_1><e_1,e_i>-...-<v,e_j><e_j,e_j>$\\
+$=<v,e_i> - <v,e_i><e_i, e_i>$\\
+$=<v,e_i> - <v, e_i>$\\
+$=0$ \\
+This key idea leads to the following definition. \\\\
+\textbf{Definition}: Let $V$ be an inner product space and let $U$ be a subspace of $V$. The \underline{orthogonal complement} of $U$, denoted $U^\perp$ is defined by $ U^\perp =\{v \epsilon V: \forall u \epsilon U, <u,v> = 0\}$. \\\\
+\textbf{Proposition}: $U^{\perp}$ is a subspace of $V$. The proof follows from the additivity and scalar multiple properties of the inner product. \\\\
+Example: If $v_1, \epsilon U^\perp, v_2 \epsilon U^\perp : \forall u \epsilon U <u, v_1> = 0$ and $<u, v_2> = 0$. Then $ \forall u \epsilon U <u, v_1 + v_2> = <u, v_1> + <u,v_2> = 0.$ \\\\
+\textbf{Theorem}: $V$ equals the direct sum of $U$ and $U^{\perp}$ (provided $U$ is finite dimensional). \\
+\textbf{Proof}: First we need to show $V$ equals the sum of $U$ and $U^{\perp}$. This comes from the calculation earlier. Let $U$ have ONB $e_1, ..., e_j$ (we know such a basis exists by Gram-Schmidt). Then for any $v \epsilon V$ we can express $v = <v, e_1> + ... + <v, e_j> + w$ where $<w,v_1> = ... = <w, e_j> = 0$. Then $v = u + w$ where $u = <v, e_1>e_1 + ... +<v,e_j>e_j \epsilon U$ and $w \epsilon U^{\perp}$ ($w$ is orthogonal to a basis of $U$, thus orthogonal to everything in $U$). Last, we need to show directness of the sum. We can simply show that the intersection of $U$ and $U^\perp$ equals the zero space. This is true because if $u$ exists in the intersection of $U$ and $U^{\perp}$ then $<u,u> = 0$ and this implies that $u = 0$. \\\\
+This decomposition theorem $V = U \oplus U^{\perp}$ allows us to talk about projections onto $U$. \\\\
+\textbf{Definition}: Suppose $V = U \oplus U^{\perp}$. Then for any $v \epsilon V$ we can write $v = u + w$ where $u \epsilon U$ and $w \epsilon U^{\perp}$. We call $u$ the \underline{orthogonal projection} of $v$ onto $U$. \\
+\textbf{Notation}: $PU$ denotes the mapping that carries $v$ to the orthogonal projection onto $U$. $P_U(v) = u$. Thus $PU$ is determined by the constraints: $v = P_U(v) + w$ where $ w \epsilon U^{\perp}$. How to calculate $P_U(v)$? Let $e_1, ..., e_j$ be an ONB for $U$. Then $P_U(v) = <v, e_1>e_1 + ... + <v,e_j>e_j$. \\\\
+The map $P_U$ is a linear map $P_U: V \rightarrow V$. It has many special properties, see 6.55 in the textbook. Projections help solve "nearest vector" optimization problems including curve fitting and linear least squares. \\\\
+\textbf{Theorem}: $P_U(v)$ is the vector in $U$ nearest to $v$. \\
+\textbf{Proof}: $||P_U(v) - v||^2 \leq ||P_U(v) - v ||^2 + ||u-P_U(v)||^2$ for any $u \epsilon U$. \\
+$= ||P_U(v) - v + u - P_U(v)||^2$\\
+$=||u-v||^2$ \\
+Thus, $||P_U(v) - v|| \leq ||u-v||$ for any $u \epsilon U$. \\\\
+Example using orthogonal projections for curve fitting. Problem: Let $f(x) = e^x$. Find the quadratic function that best approximates $e^x$ on the interval [-1,1]. Use the inner product: $<f,g> = \int_{-1}^{1} fg$ \\\\
+Procedure: Let $U = $ span$(1, x, x^2) =$ the quadratic functions, a subspace of $V =$ all continuous functions. The basis is not orthonormal *sad*. Use Gram-Schmidt to get an ONB of $U$: \\
+$q_0(x) = ...$\\
+$q_1(x) = ... $\\
+$q_3(x) = ...$\\
+Then project $e^x$ onto $U$ to get $p(x) = <e^x,q_0(x)>q_0(x) + <e^x, q_1(x)>q_1(x) + <e^x, q_2(x)>q_2(x)$. Plot the results against $e^x$. This problem will be finished in next class. 
+\end{document}
