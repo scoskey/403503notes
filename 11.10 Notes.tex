@@ -1,0 +1,52 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+
+\title{11.10 Notes}
+\author{Math 403/503}
+\date{November 2022}
+
+\begin{document}
+
+\maketitle
+
+\section{First Video Lecture - Gram-Schmidt Example}
+Recall we will work in $V =$ all continuous real-valued functions [-1,1], let $v=e^x$. This has a supspace $U= $ span($1, x, x^2)$. We are assuming an inner product: \\ 
+$<f,g> = \int_{-1}^{1} fg dx$\\
+$||f|| = \sqrt{\int_{-1}^{1} f^2 dx}$\\\\
+First we need to replace $v_1 = 1, v_2 = x, v_3 = x^2$ with an ONB $e_1, e_2, e_3$. \\\\
+\textbf{Gram-Schmidt}:\\
+$e_1 = \frac{v_1}{||v_1||}$ $= \frac{1}{\sqrt{\int_{-1}^{1} 1^2 dx}}$ = $\frac{1}{\sqrt{2}}$\\
+$e_2 = \frac{v_2 - <v_2,e_1>e_1}{||....||}$\\
+$= \frac{x - \int_{-1}^{1} x \frac{1}{\sqrt{2}}dx (\frac{1}{\sqrt{2}}}{||....||}$\\\\
+The integral term cancels out because x is an odd function! So... \\
+$= \frac{x}{||x||} = \frac{x}{\sqrt{\int_{-1}^{1} x^2 dx}} = \frac{x}{\sqrt{\frac{2}{3}}} = \sqrt{\frac{3}{2}} (x)$\\
+$e_3 = \frac{v_3 - <v_3,e_1>e_1 - <v_3, e_2>e_2}{||....||}$\\
+$= \frac{x^2 - \int_{-1}^{1} x^2(\frac{1}{\sqrt{2}} dx \frac{1}{\sqrt{2}} - \int_{-1}^{1} x^2 \sqrt{\frac{3}{2}} x dx \sqrt{\frac{3}{2}} x}{||.....||}$ \\
+$ = \frac{x^2 - \frac{1}{3}}{||x^2 - \frac{1}{3}||}$\\
+$= \frac{x^2 - \frac{1}{3}}{\sqrt{\int_{-1}^{1} (x^2 - \frac{1}{3})^2 dx}}$ \\
+$= \frac{x^2 - \frac{1}{3}}{\sqrt{\frac{8}{45}}}$\\
+$= \sqrt{\frac{45}{8}}(x^2 - \frac{1}{3}$\\\\
+So, $e_1 = \frac{1}{\sqrt{2}}, e_2 = \sqrt{\frac{3}{2}} x, e_3 = \sqrt{\frac{45}{8}} (x^2 - \frac{1}{3}$. Next we project $e^x$ onto $U = $span($e_1, e_2, e_3)$. $P_Uv = <v, e_1>e_1 + <v, e_2>e_2 + <v,e_3>e_3.$ \\
+$<v,e_1> = \int_{-1}^{1} e^x \frac{1}{\sqrt{2}} dx = \frac{1}{\sqrt{2}} e^x |_{-1}^{1} = \frac{1}{\sqrt{2}} (e-\frac{1}{e}$ \\
+$<v,e_2> = \int_{-1}^{1} e^x \sqrt{\frac{3}{2}} x dx= \frac{\sqrt{6}}{e}$\\\\
+This is an integration by parts problem, but we skipped it. We went to  symbolab to compute it! \\
+$<v,e_3> = \int_{-1}^{1} e^x \sqrt{\frac{45}{8}} (x^2 - \frac{1}{3}) dx = \sqrt{\frac{5}{2}} (e - \frac{7}{e}$\\\\
+$P_Uv = \frac{1}{\sqrt{2}} (e - \frac{1}{e}) \frac{1}{\sqrt{2}} + \frac{\sqrt{6}}{e} \sqrt{\frac{3}{2}} x + \sqrt{\frac{5}{2}} (e - \frac{7}{e} \sqrt{\frac{45}{8} (x^2 - \frac{1}{3}}) $ \\\\
+Now we can plug our equation into desmos to see how close the approximation is over the given integral! 
+\section{Second Video - Adjoints (Chapter 7)}
+Before proceeding generally, we state/recall the situation in $R^n$ or $C^n$ with the dot product. If $A$ is an m x n matrix, it's \underline{adjoint} (also called hermitian) is $A^* = \overline{A^t}$. So for $R, A^*$ is just the transpose (dual) but for $C, A^*$ is something different. \\\\
+Example: $A = \begin{bmatrix} 
+1&2&3 + i\\-i&4&0
+\end{bmatrix}, A^* = \begin{bmatrix}
+1&i\\2&4\\3-i&0
+\end{bmatrix}$\\\\
+Using the inner product $<v,w> = v \cdot \overline{w}$. $A$ and $A^*$ have a special relationship: $<Av,w> = <v, A^*w>$. To see this: $<Av,w> = (Av) \cdot \overline{w} = (Av)^t\overline{w} = v^tA^t \overline{w} = v^t(A^t\overline{w}) = v^t\overline{(\overline{A^t}w)} = v^t \overline{(A^*w)} = v \cdot \overline{(A^*w)} = <v, A^*w>$. \\\\
+This special property of $A^*$ becomes the definition in general inner product spaces: \\\\
+\textbf{Definition}: Let $V, W$ be inner product spaces (finite dimensional). Let $T \epsilon L(V,W)$. Then $T^*$ is an element of $L(W,V)$ defined by the relationship $<Tv, w> = <v, T^*w>$ for all $v \epsilon V, w \epislon W$. \\\\
+In order for the definition to make sense we need to show $T^*w$ exists for every $w$ and then that $T^*$ is linear. We show existence; linearity is 7.5 in the text.\\\\
+\textbf{Proof that $T^*w$ exists}: \\
+Let $V,W$ as above, with $T \epislon L(V,W)$. Let $V$ have orthonormal basis $e_1, ..., e_n$. Fix $w \epsilon W$ as arbitrary. We are looking for a vector $u \epsilon V $ such that $<Tv, w> = <v,u> \forall v \epsilon V.$ To do this let $\phi(v) = <Tv, w>. \phi$ is a linear functional (it is in $V^*$). So $\forall v: \phi(v) = \phi(<v,e_1>e_1 + ... + <v,e_n>e_n) = <v,e_1>\phi(e_1) + ... + <v,e_n>\phi(e_n) = <v, \overline{\phi(e_1)}e_1)> +...+ <v, \overline{\phi(e_n)}e_n> = <v, \overline{\phi(e_1)}e_1 +...+\overline{\phi(e_n)}e_n>$. Let $u$ be the second term in the inner product, thus, it equals $<v,u>$. Note that $T^*w$ is now defined to be this vector, $u$. \\\\
+The matrix of a linear map $T$ is related to the matrix of $T^*$ in the expected way, provided you work over orthonormal bases for $V$ and $W$. If $V$ has ONB $e_1, ..., e_n$ and $W$ has ONB $f_1, ..., f_n$ and if $T$ has matrix $A$ with respect to $e_i, f_j$ then $T^*$ has matrix $\overline{A^t}$ with respect to $f_j, e_i$. Note: If you work in polynomial spaces with basis $1, x, x^2, ..., x^n$ and inner product $\int_{-1}^{1} Pq dx$ then these are not orthonormal, so knowing the matrix of some $T \epsilon L(V)$ doesn't tell you the matrix. 
+
+\end{document}
