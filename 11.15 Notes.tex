@@ -1,0 +1,61 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+
+\title{11.15 Notes}
+\author{Math 403/503}
+\date{November 2022}
+
+\begin{document}
+
+\maketitle
+
+\section{Week 13 - Spectral Theory}
+We mix the theory of the adjoint $T^*$ which in principle works for any $T \epsilon L(V,W)$ with the thoery of operators (eigenvalues and eigenvectors) which works when $T \epsilon L(V)$. Recall that the main rule of $T^*$ is: $<Tv,w> = <v, T^*w>$. And recall that if working with an ONB, the matrix of $T^*$ will be the conjugate transpose of the matrix of $T$. \\\\
+First we study...\\
+\textbf{Definition}: $T$ is called \underline{self-adjoint} if $T = T^*$. For real vector spaces, this is analogous to \underline{symmetric matrices}. You might recall from 301 that symmetric matrices have really nice eigenvalues/eigenvectors. \\\\
+Spectral theory for real symmetric matrices: 
+\begin{itemize} 
+\item Any real symmetric matrix $A (A = A^t)$ has real eigenvalues only. \\\\ 
+\textbf{Proof}: Suppose $Av = \lambda v$. We want to show $\lambda$ is real. We calculate the following:\\
+$\lambda ||v^2|| \\
+= \lambda v^t \cdot \overline{v}\\
+= (Av)^t \cdot \overline{v} \\
+= v^t A^t \cdot \overline{v} \\
+= v^t \overline{Av} \\
+= v^t \overline{\lambda v} \\
+= \overline{\lambda} ||v^2||$. \\
+Because the norm of $v^2$ is a scalar we can cancel it from both sides to get that $\lambda = \overline{\lambda}$, so $\lambda$ is real. 
+\item Any real symmetric matrix $A$ has orthogonal eigenvectors. In fact, it has dim V many, so it is diagonalizable. \\\\
+\textbf{Proof of first statement}: Consider eigenvalues $\lambda_1, \lambda_2$, which are not equal. And consider corresponding eigenvectors $v_1, v_2$. Remember, from point 1, we know that the $\lambda$ values are real. We calculate the following: \\
+$\lambda_2 v_1^t \cdot v_2 \\
+= v_1^t \lambda_2 v_2 \\
+= v_1^t Av_2 \\
+= v_1^t A^t v_2 \\
+= (Av_1)^t v_2 \\
+= \lambda_1 v_1^t v_2$.\\
+Thus, since $\lambda_1 \neq \lambda_2$ we must have $v_1^t \cdot v_2 = 0$ so the eigenvectors are orthogonal. \\\\
+Delaying the proof that there are dim V many such eigenvectors, the statements above imply that $A$ can be diagonalized: $A = Q \lambda Q^{-1}$, where $Q$ has orthonormal columns. 
+\end{itemize}
+The arguments above generalize to real inner product spaces to show...
+\begin{itemize}
+    \item Any self-adjoint $T$ has real eigenvalues only 
+    \item Any self-adjoint $T$ has orthogonal eigenvectors (dim V many). 
+\end{itemize}
+Over $C$ something even more general is true! \\\\
+\textbf{Definition}: $T$ is normal if $T^* T = TT^*$. \\\\
+If $T$ is self-adjoint then $T$ is normal. But many more operators are normal than self-adjoint! Over $C$ the results above generalize to give us similar conclusions for normal operators. 
+\begin{itemize}
+    \item If $T$ is normal then $T$ and $T^*$ have the same eigenvectors, corresponding to conjugate eigenvalues - we will prove this next time. 
+    \item If $T$ is normal then $T$ has orthogonal eigenvectos, in fact, dim V many. \\\\
+    \textbf{Proof of Orthongonality}: Let $v_1, v_2$ be eigenvectors corresponding to eigenvalues $\lambda_1, \lambda_2$ (where $\lambda_1 \neq \lambda_2$). \\
+    $\lambda_2 <v_1, v_2> = <v_1, \overline{\lambda_2}v_2>\\
+    = <v_1, T^*v_2> \\
+    = <Tv_1, v_2> \\
+    = <\lambda_1 v_1, v_2>\\
+    = \lambda_1 <v_1,v_2>$\\
+    Since $\lambda_1 \neq \lambda_2$ we must have $<v_1, v_2> = 0$. So $v_1$ is orthogonal to $v_2$
+\end{itemize}
+The conclusion is that if $T$ is a normal operator then there exists an orthonormal basis $e_1, ..., e_n$ in which $T$ is diagonal! The converse is also true. Namely, if $T$ is diagonal with respect to some ONB then $T$ is normal. This whole thing together is called "The Spectral Theorem". 
+
+\end{document}
