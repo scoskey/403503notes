@@ -1,0 +1,74 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+
+\title{11.17 Notes}
+\author{Math 403/503}
+\date{November 2022}
+
+\begin{document}
+
+\maketitle
+
+\section{Game Plan For Future Weeks}
+\begin{itemize}
+    \item Today - finish spectral theorem 
+    \item Next week - break 
+    \item Following week - maybe chapter 10 
+    \item Dead week - review and give out final quiz 
+    \item Finals week - submit quiz 
+\end{itemize}
+\section{Last Time...}
+Last time we introduced the (complex) spectral theorem which consisted of two statements: 
+\begin{itemize}
+    \item If $T$ is normal $(T^*T=TT^*)$ then $T$ and $T^*$ have the same eigenvectors but with conjugate eigenvalues: $Tv = \lambda v \leftrightarrow T^* v = \overline{\lambda} v$
+    \item If $T$ is normal then the eigenvectors of $T$ are mutually orthogonal, and there are dim V many eigenvectors (an orthonormal basis of V consisting of eigenvectors). 
+\end{itemize}
+I owe you a few portions of proofs. 
+\begin{itemize}
+    \item Assume $Tv = \lambda v$ (i.e. $(T - \lambda I)v = 0$. Note that $(T-\lambda I)^* = T^* - \overline{\lambda}I$. Note that $T - \lambda I$ is also normal (if $T$ is): $(T - \lambda I)^* (T-\lambda I) = (T^* - \lambda I)(T - \lambda I)$\\
+    $ = T^*T - \lambda T^* - \overline{\lambda} T + \lambda \overline{\lambda} I \\ 
+    = TT^* - \lambda T^* - \overline{\lambda} T + \overline{\lambda} \lambda I \\
+    = (T-\lambda I)(T^* - \overline{\lambda} I)$\\
+    Now, $(T - \lambda I)v = 0 \rightarrow ||(T- \lambda I) v||^2 = 0 \\
+    \rightarrow <(T-\lambda I)v, (T-\lambda I)v> = 0 \\
+    \rightarrow <v, (T - \lambda I)^*(T-\lambda I)v> = 0 \\
+    \rightarrow <v, (T - \lambda I)(T - \lambda I)^*v> = 0 \\
+    \rightarrow <(T - \lambda I)^* v, (T - \lambda I)^* v> = 0\\
+    \rightarrow (T - \lambda I)^* v = 0 \\
+    \rightarrow (T^* - \overline{\lambda} I) v = 0 \\
+    \rightarrow T^*v = \overline{\lambda} v$. 
+    \item We showed last time that the various eigenspaces of $T$ are pairwise and orthogonal. Let me just repeat: Let $Tv_1 = \lambda_1 v_1, Tv_2 = \lambda_2 v_2 (\lambda_1 \neq \lambda_2)$. (know that $T^*v_1 = \overline{\lambda_1} v_1, T^*v_2 = \overline{\lambda_2} v_2$). Now, $<Tv_1, v_2> = <v_1, T^*v_2> \\
+    \rightarrow <\lambda_1 v_1, v_2> = <v_1, \overline{\lambda_2} v_2> \\
+    \rightarrow \lambda_1 <v_1, v_2> = \lambda_2<v_1, v_2> \\
+    \rightarrow <v_1, v_2> = 0$
+\end{itemize}
+The last thing we need to do is show that in fact $T$ is diagonalized by its eigenvectors. We can do this in two parts: 
+\begin{itemize}
+    \item There exists an orthonormal basis in which $T$ has an upper triangular matrix 
+    \item Any upper triangular matrix that happens to be normal must be diagonal 
+\end{itemize}
+The first bullet point follows from some things we have already done. Begin with any basis $v_1, ..., v_n$ and let $A$ be the matrix of $T$ in this basis. Since we are working over $C$ we know that $T$ has an upper triangular matrix with respect to some basis (e.g. the Jordan form) so: $A = BUB^{-1}$ where $U$ is upper triangular. Now from Gram-Schmidt we can factor $B$ as $B = QR$ where $Q$ is orthonormal and $R$ is upper triangular, then: \\
+$A = BUB^{-1} \\
+= QR U (QR)^{_1}\\
+= QR U R^{-1} Q^{-1}\\
+= Q (RUR^{-1})Q^{-1}$\\\\
+For the second bullet point we simply inspect what it means for an upper triangular matrix $U$ to be normal. $U = \begin{bmatrix}
+a_{11} & a_{12} & ... & a_{1n}\\ 0 & a_{22} & ... & a_{2n} \\ 0 & 0 & a_{33} \\ ...
+\end{bmatrix} 
+$Normal: $U^* U = UU^* $. Looking at the $(1,1)$ entry: \\
+$|a_{11}|^2 = |a_{11}|^2 + ... + |a_{1n}|^2 \\
+\rightarrow |a_{12}| ^ 2 = ... = |a_{1n}|^2 = 0 \\
+\rightarrow a_{12} = ... = a_{1n} = 0$. \\\\
+Looking at the $(2,2)$ entry: \\
+$|a_{12}|^2 + |a_{22}|^2 = |a_{22}|^2 + ... + |a_{2n}|^2 \\
+\rightarrow |a_{23}|^2 + ... + |a_{2n}|^2 = 0\\
+\rightarrow a_{23} = ... = a_{2n} = 0$\\\\
+Inductively we can find that all off-diagonal entries are zero, so, normal and upper triangular implies diagonal. So we conclude that normal matrices over $C$ have the decomposition $A = Q \Lambda Q^*$ where $Q$ is orthonormal and $\Lambda$ is diagonal (over a real vector space one must assume $A$ is symmetric i.e. self adjoint). \\\\
+One application of the spectral theorem is the "Polar decomposition". Any complex number $z$ can be written in a polar form $e^{i\theta} \cdot r$, as a product of a unit (norm 1) and a positive real number. There is a similar result for operators! The unit will be replaced by a "unitary" or orthonormal matrix $Q$. The positive real number will be replaced by a "positive operator". \\\\
+\textbf{Definition}: An operator $p \epsilon L(V)$ is called \underline{positive} if for all $v \epsilon V, <Pv,v> \geq 0$. NOte that over $C$, positive is equivalent to $P$ being orthogonally diagonalizable with all eigenvalues being real and nonnegative. \\\\
+\textbf{Theorem}: Any square matrix $A$ may be decomposed as $Q \cdot P$ where $Q$ is orthonormal and $P$ is positive. \\\\
+\textbf{Proof (in the special case when $A$ is normal)}: We know $A = Q \Lambda Q^*$ from the spectral theorem. Then for each $\lambda_{ii}$ in $\Lambda$ write it as $\lambda_{ii} = u_i |\lambda_{ii}|$ where $u_i$ satisfies $|u_i| = 1$. Then let $U$ be a matrix with just entries along the diagonal, and similarly $|\Lambda|$ just has entries along the diagonal. Then $A = QU |\Lambda|Q^* = QUQ^* \cdot Q|\Lambda|Q^*$\\\\
+An arbitrary matrix $A$ gives rise to a normal matrix $A^* A$... then work harder to get the result for $A$ too
+
+\end{document}
