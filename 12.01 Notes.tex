@@ -1,0 +1,56 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+
+\title{12.01 Notes}
+\author{Math 403/503}
+\date{December 2022}
+
+\begin{document}
+
+\maketitle
+
+\section{Our Schedule}
+Today - last lecture on determinants \\
+Tuesday - review and homework questions \\
+Wednesday - quiz is released (same format as the last two) \\
+Thursday - optional class day; bring catch up questions, bring general questions, bring clarification questions about the quiz \\
+Tuesday - quiz is due at the end of the day 
+
+\section{Today's Lecture - Determinants}
+We now define determinants and explore their properties analogously to our discussion of trace. \\\\
+\textbf{Definition}: If $T \epsilon L(C^n)$ and $\lambda_1, ..., \lambda_n$ are the eigenvalues of $T$ with repetitions included, we let det(T) = $\lambda_1 * ... * \lambda_n$. \\\\
+det(T) $= 0 \leftrightarrow T$ has 0 as an eigenvalue \\
+$\leftrightarrow T$ is not invertible \\\\
+We want to calculate det(T) from the matrix of $T$ (like trace). If $T$ has matrix $A$ in some basis and $A$ is upper triangular then det(T) = the product of the diagonal entries $a_{11}*...*a_{nn}$. \\\\
+Unlike the trace, the diagonal product is NOT invariant under change of basis. So to find the determinant for a basis that doesn't make $T$ triangular, there is an extra step... Gauss - Jordan elimination. \\\\
+Temporarily define the matrix determinant "n-det". \\\\
+\textbf{Definition}: Let $A$ be an n x n matrix. We define... 
+\begin{itemize}
+    \item If $A$ is triangular, mdet(A) = $a_{11} * ... * a_{nn}$
+    \item Adding a multiple of one row to another row does not change its mdet 
+    \item Swapping any two rows negates mdet(A)
+\end{itemize}
+This means given any matrix we can calculate mdet(A) by first eliminating to upper triangular (keeping careful count of row exchanges) and then taking the diagonal. \\\\
+Our goal is to show mdet is really equal to det. We mainly need that mdet doesn't depend on change of basis. \\\\
+\textbf{Key Lemma}: mdet(AB) = mdet(A) mdet(B). \\\\
+\textbf{Proof Sketch}: We start with 3 special cases when $A = E$ is an "elimination matrix": 
+\begin{itemize}
+    \item $E$ looks like the identity but has a single nonzero off diagonal entry. Then mdet(E) = 1 and mdet(EB) = mdet(B) because E just adds a multiple of one row to another. Thus, mdet(EB) = mdet(E) mdet(B). So we are happy in this case! 
+    \item $E$ looks like an identity but with two rows exchanged. Then mdet(E) = -1 and mdet(EB) = - mdet(B) (because E swaps two rows of B). Thus, mdet(EB) = mdet(E) mdet(B)
+    \item $E$ is the identity but with one of the one's replaced with another number, x. Then mdet(E) = x and mdet(EB) = x mdet(B). Thus, mdet(EB) = mdet(E) mdet(B). 
+\end{itemize}
+We now use the fact that any matrix $A$ is a product of elimination matrices. $A = E_1 * E_2 * ... * E_n$. Thus, mdet(AB) = mdet($E_1 * E_2 * ... * E_kB$) = mdet$(E_1)$ mdet $(E_2 ... E_k B)$ = ... = ... = mdet($E_1 ... E_k$) mdet(B) = mdet(A) mdet(B). \\\\
+A consequence: mdet($B^{-1}AB$) = mdet($B^{-1}$) mdet(A) mdet(B) = mdet$(B)^ {-1}$ mdet(A) mdet(B) = mdet(A). \\\\
+So mdet is basis independent. \\\\
+\textbf{Theorem}: If $T$ has matrix $A$ then det(T) = mdet(A). \\
+\textbf{Proof}: It's true if $A$ is triangular, otheriwse change basis to make it triangular. \\\\
+From now on, we say "det" for both operators and matrices. \\\\
+\textbf{Corollary}: det(ST) = det(S) det(T) because its true for trace. \\\\
+The determinant has many applications, but one notable application to volumes slash calculus. Observation: Assume $T \epsilon L(R^n)$ and the matrix  of $T$ in the standard basis is diagonal. What does $T$ do to the volume of the unit box? T(unit box) = a box with volume $|\lambda_1 ... \lambda_n| =$ $|det T|$. T(any box B) = a box with volume $|det T|$ * vol(B). T(any set S) = a set with volume $|det T|$ * vol(S). \\\\
+Surprisingly, this happen for ANY $T$, not just $T$ with a diagonal matrix! \\\\ 
+\textbf{Theorem}: If $S$ is a subset of $R^n$ and $T \epsilon L(R^n)$ then vol(T(S)) = |det(T)| vol(A). \\
+\textbf{Proof Sketch}: First do it assuming $T$ is positive. In this case, there is an orthonormal basis of $R^n$ where the matrix of $T$ is diagonal, and we can argue as above. For a general $T$, the polar decomposition states that $T = QP$ where $Q$ is orthonormal and $P$ is positive. $Q$ being orthonormal doesn't change volume also |det Q| =1 and $P$ being positive changes volume by det P. Thus $T = QP$ changes volume by |det Q det P| = |det T|. \\\\
+This is why a determinant appears in substitution forumals in multivariable integration theory: Suppose $\phi: R^n \rightarrow R^n$ is a change of variables function and its Jacobian derivative (the matrix of partials) is J. Then the integral of f can be written as the integral of f composed with $\phi$ multipled by |det J|. 
+
+\end{document}
